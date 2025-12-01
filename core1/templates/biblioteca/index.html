@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {%load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión Bibliotecaria</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- HEADER PÚBLICO -->
+    <header class="public-header">
+        <nav class="public-nav">
+            <div class="nav-brand">
+                <h2>Biblioteca</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<!-- HERO SECTION -->
+<section id="inicio" class="hero-section">
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">Sistema de Gestión de Préstamos Bibliotecarios</h1>
+            <p class="hero-description">
+                Gestiona tu biblioteca de manera eficiente con nuestro sistema integral
+                de préstamos, catálogo digital y administración de recursos académicos.
+            </p>
+            <div class="hero-buttons">
+                <a href=" " class="btn btn-primary">Acceder al Sistema</a>
+                <a href="#servicios" class="btn btn-secondary">Conocer Servicios</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="library-illustration">
+                <div class="book-stack">
+                    <div class="book book-1"></div>
+                    <div class="book book-2"></div>
+                    <div class="book book-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICIOS SECTION -->
+<section id="servicios" class="services-section">
+    <div class="container">
+        <h2 class="section-title">Nuestros Servicios Integrales</h2>
+        <p class="section-subtitle">Ofrecemos una plataforma completa para la gestión eficiente de tu biblioteca</p>
+     
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">📖</div>
+                <h3>Gestión de Préstamos</h3>
+                <p>Sistema automatizado de préstamos, renovaciones y devoluciones con recordatorios inteligentes y control de vencimientos.</p>
+            </div>
+           
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Catálogo Digital Avanzado</h3>
+                <p>Motor de búsqueda inteligente entre miles de libros físicos y digitales con filtros por autor, categoría y disponibilidad.</p>
+            </div>
+           
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Reportes y Analytics</h3>
+                <p>Genera reportes detallados de uso, estadísticas de préstamos, tendencias y disponibilidad de recursos en tiempo real.</p>
+            </div>
+           
+            <div class="service-card">
+                <div class="service-icon">👥</div>
+                <h3>Gestión Multi-usuario</h3>
+                <p>Administra estudiantes, profesores, bibliotecarios y administradores con diferentes niveles de acceso y permisos.</p>
+            </div>
+           
+            <div class="service-card">
+                <div class="service-icon">⏰</div>
+                <h3>Reservas en Línea</h3>
+                <p>Sistema de reservas automatizado con notificaciones de disponibilidad y gestión de colas de espera.</p>
+            </div>
+           
+            <div class="service-card">
+                <div class="service-icon">🔔</div>
+                <h3>Notificaciones Inteligentes</h3>
+                <p>Alertas automáticas por vencimientos, disponibilidad de libros reservados y novedades del sistema.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ESTADÍSTICAS SECTION -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">5,000+</span>
+                <span class="stat-label">Libros en Catálogo</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">2,500+</span>
+                <span class="stat-label">Usuarios Activos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">15,000+</span>
+                <span class="stat-label">Préstamos Anuales</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">98%</span>
+                <span class="stat-label">Satisfacción</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CATÁLOGO PREVIEW -->
+<section id="catalogo" class="catalog-preview">
+    <div class="container">
+        <h2 class="section-title">Explora Nuestro Catálogo</h2>
+        <p class="section-subtitle">Descubre nuestra amplia colección de recursos académicos y literarios</p>
+       
+        <div class="catalog-categories">
+            <div class="category-card">
+                <h4>📚 Literatura</h4>
+                <p>Novelas, poesía y obras clásicas</p>
+                <span class="count">1,200+ libros</span>
+            </div>
+            <div class="category-card">
+                <h4>🔬 Ciencias</h4>
+                <p>Matemáticas, física, química, biología</p>
+                <span class="count">800+ libros</span>
+            </div>
+            <div class="category-card">
+                <h4>💻 Tecnología</h4>
+                <p>Programación, IA, desarrollo web</p>
+                <span class="count">600+ libros</span>
+            </div>
+            <div class="category-card">
+                <h4>📈 Negocios</h4>
+                <p>Administración, economía, marketing</p>
+                <span class="count">450+ libros</span>
+            </div>
+        </div>
+       
+        <div class="catalog-cta">
+            <a href="" class="btn btn-large">Explorar Catálogo Completo</a>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonials-section">
+    <div class="container">
+        <h2 class="section-title">Lo que Dicen Nuestros Usuarios</h2>
+       
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"El sistema ha revolucionado la gestión de nuestra biblioteca universitaria. La eficiencia ha aumentado en un 60%."</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>Dr. Carlos Martínez</strong>
+                    <span>Director de Biblioteca</span>
+                </div>
+            </div>
+           
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"Como estudiante, encontrar libros y gestionar mis préstamos nunca fue tan fácil y rápido. ¡Excelente sistema!"</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>Ana López</strong>
+                    <span>Estudiante de Ingeniería</span>
+                </div>
+            </div>
+           
+            <div class="testimonial-card">
+                <div class="testimonial-content">
+                    <p>"La plataforma ha simplificado nuestro trabajo diario. Los reportes automáticos son increíblemente útiles."</p>
+                </div>
+                <div class="testimonial-author">
+                    <strong>María González</strong>
+                    <span>Bibliotecaria</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>¿Listo para Optimizar tu Biblioteca?</h2>
+            <p>Únete a nuestra plataforma y descubre una nueva forma de gestionar recursos bibliográficos</p>
+            <div class="cta-buttons">
+                <a href="" class="btn btn-primary btn-large">Comenzar Ahora</a>
+                <a href="#contacto" class="btn btn-secondary btn-large">Más Información</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer class="public-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>UHO Library</h3>
+                <p>Sistema de Gestión de Préstamos Bibliotecarios</p>
+            </div>
+            <div class="footer-section">
+                <h4>Enlaces Rápidos</h4>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#catalogo">Catálogo</a></li>
+                    <li><a href="">Acceder</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <p> +1 234 567 890</p>
+                <p> biblioteca@unime.edu</p>
+                <p> Universidad UHO, Holguin</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Sistema de Gestión de Préstamos Bibliotecarios - UHO. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
