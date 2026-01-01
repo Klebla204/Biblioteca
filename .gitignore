@@ -1,5 +1,6 @@
 # Entorno virtual
-myenv/
+venv/
+myvenv/
 
 # Archivos de entorno / configuración local
 .env
