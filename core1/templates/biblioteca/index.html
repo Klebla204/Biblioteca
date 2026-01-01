@@ -16,11 +16,11 @@
                 <h2>Biblioteca</h2>
             </div>
             <ul class="nav-menu">
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="{% url 'Login' %}">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#catalogo">Catálogo</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#nosotros">Contacto</a></li>
             </ul>
         </nav>
     </header>
@@ -35,7 +35,7 @@
                 de préstamos, catálogo digital y administración de recursos académicos.
             </p>
             <div class="hero-buttons">
-                <a href=" " class="btn btn-primary">Acceder al Sistema</a>
+                <a href="{% url 'Login' %}" class="btn btn-primary">Acceder al Sistema</a>
                 <a href="#servicios" class="btn btn-secondary">Conocer Servicios</a>
             </div>
         </div>
@@ -151,7 +151,7 @@
         </div>
        
         <div class="catalog-cta">
-            <a href="" class="btn btn-large">Explorar Catálogo Completo</a>
+            <a href="{% url 'catalog' %}" class="btn btn-large">Explorar Catálogo Completo</a>
         </div>
     </div>
 </section>
@@ -211,7 +211,7 @@
 
     <!-- FOOTER -->
     <footer class="public-footer">
-        <div class="footer-content">
+        <div class="footer-content" id="nosotros">
             <div class="footer-section">
                 <h3>UHO Library</h3>
                 <p>Sistema de Gestión de Préstamos Bibliotecarios</p>

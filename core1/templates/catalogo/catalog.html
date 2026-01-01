@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {%load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Libros - Biblioteca UHO</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+</head>
+<body>
+    <!-- HEADER PÚBLICO -->
+    <header class="public-header">
+        <nav class="public-nav">
+            <div class="nav-brand">
+                <h2>Biblioteca UHO</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#catalogo" class="active">Catálogo</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="login.html" class="login-btn">Acceder</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL DEL CATÁLOGO -->
+    <main class="catalog-main">
+        <!-- Header del Catálogo -->
+        <section class="catalog-header-section">
+            <div class="container">
+                <h1 class="catalog-title">Catálogo de Libros</h1>
+                <p class="catalog-subtitle">Explora nuestra colección de más de 5,000 libros disponibles</p>
+                
+                <!-- Barra de Búsqueda -->
+                <div class="search-bar">
+                    <form class="search-form">
+                        <div class="search-input-group">
+                            <i class="fas fa-search"></i>
+                            <input type="text" 
+                                   placeholder="Buscar por título, autor, ISBN o palabra clave..." 
+                                   class="search-input">
+                        </div>
+                        <button type="submit" class="search-btn">Buscar</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filtros de Búsqueda -->
+        <section class="filters-section">
+            <div class="container">
+                <div class="filters-wrapper">
+                    <div class="filter-group">
+                        <h4>Filtrar por:</h4>
+                        
+                        <div class="filter-row">
+                            <!-- Categoría -->
+                            <div class="filter-item">
+                                <label for="categoria"><i class="fas fa-tag"></i> Categoría</label>
+                                <select id="categoria" class="filter-select">
+                                    <option value="">Todas las categorías</option>
+                                    <option value="literatura">📚 Literatura</option>
+                                    <option value="ciencias">🔬 Ciencias</option>
+                                    <option value="tecnologia">💻 Tecnología</option>
+                                    <option value="negocios">📈 Negocios</option>
+                                    <option value="arte">🎨 Arte</option>
+                                    <option value="historia">🏛️ Historia</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Sede -->
+                            <div class="filter-item">
+                                <label for="sede"><i class="fas fa-map-marker-alt"></i> Sede</label>
+                                <select id="sede" class="filter-select">
+                                    <option value="">Todas las sedes</option>
+                                    <option value="principal">Campus Principal</option>
+                                    <option value="centro">Centro de Holguín</option>
+                                    <option value="sur">Campus Sur</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Disponibilidad -->
+                            <div class="filter-item">
+                                <label for="disponibilidad"><i class="fas fa-check-circle"></i> Disponibilidad</label>
+                                <select id="disponibilidad" class="filter-select">
+                                    <option value="">Todos</option>
+                                    <option value="disponible">Disponible ahora</option>
+                                    <option value="prestado">En préstamo</option>
+                                    <option value="reservado">Reservado</option>
+                                </select>
+                            </div>
+                            
+                            <!-- Año -->
+                            <div class="filter-item">
+                                <label for="año"><i class="fas fa-calendar"></i> Año de publicación</label>
+                                <select id="año" class="filter-select">
+                                    <option value="">Cualquier año</option>
+                                    <option value="2020-2024">2020 - 2024</option>
+                                    <option value="2010-2019">2010 - 2019</option>
+                                    <option value="2000-2009">2000 - 2009</option>
+                                    <option value="1990-1999">1990 - 1999</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="filter-actions">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-filter"></i> Aplicar Filtros
+                            </button>
+                            <button class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> Limpiar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estadísticas Rápidas -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <span class="stat-number">5,280</span>
+                        <span class="stat-label">Libros en catálogo</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <span class="stat-number">3,450</span>
+                        <span class="stat-label">Disponibles ahora</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-tags"></i>
+                        </div>
+                        <span class="stat-number">24</span>
+                        <span class="stat-label">Categorías</span>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">Sedes disponibles</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grid de Libros -->
+        <section class="books-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Libros Destacados</h2>
+                    <p>Los libros más populares de nuestra colección</p>
+                </div>
+                
+                <div class="books-grid">
+                    <!-- Libro 1 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <div class="cover-placeholder literature">
+                                <span>C</span>
+                            </div>
+                            <span class="book-status available">
+                                <i class="fas fa-check"></i> Disponible
+                            </span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Cien años de soledad</h3>
+                            <p class="book-author">Gabriel García Márquez</p>
+                            <p class="book-isbn">ISBN: 9788437604947</p>
+                            
+                            <div class="book-meta">
+                                <span class="meta-tag">
+                                    <i class="fas fa-tag"></i> Novela
+                                </span>
+                                <span class="meta-location">
+                                    <i class="fas fa-map-marker-alt"></i> Campus Principal
+                                </span>
+                            </div>
+                            
+                            <p class="book-description">
+                                Una saga familiar que narra la historia de la familia Buendía en el pueblo ficticio de Macondo.
+                            </p>
+                            
+                            <div class="book-actions">
+                                <button class="btn-details">
+                                    <i class="fas fa-info-circle"></i> Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Libro 2 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <div class="cover-placeholder science">
+                                <span>B</span>
+                            </div>
+                            <span class="book-status reserved">
+                                <i class="fas fa-clock"></i> Reservado
+                            </span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Breve historia del tiempo</h3>
+                            <p class="book-author">Stephen Hawking</p>
+                            <p class="book-isbn">ISBN: 9788478809111</p>
+                            
+                            <div class="book-meta">
+                                <span class="meta-tag">
+                                    <i class="fas fa-tag"></i> Ciencia
+                                </span>
+                                <span class="meta-location">
+                                    <i class="fas fa-map-marker-alt"></i> Campus Sur
+                                </span>
+                            </div>
+                            
+                            <p class="book-description">
+                                Explicación de los conceptos fundamentales del universo, desde el Big Bang hasta los agujeros negros.
+                            </p>
+                            
+                            <div class="book-actions">
+                                <button class="btn-details">
+                                    <i class="fas fa-info-circle"></i> Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Libro 3 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <div class="cover-placeholder technology">
+                                <span>P</span>
+                            </div>
+                            <span class="book-status available">
+                                <i class="fas fa-check"></i> Disponible
+                            </span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Python para todos</h3>
+                            <p class="book-author">Charles R. Severance</p>
+                            <p class="book-isbn">ISBN: 9788460824515</p>
+                            
+                            <div class="book-meta">
+                                <span class="meta-tag">
+                                    <i class="fas fa-tag"></i> Tecnología
+                                </span>
+                                <span class="meta-location">
+                                    <i class="fas fa-map-marker-alt"></i> Centro de Holguín
+                                </span>
+                            </div>
+                            
+                            <p class="book-description">
+                                Introducción completa a la programación en Python para principiantes y programadores intermedios.
+                            </p>
+                            
+                            <div class="book-actions">
+                                <button class="btn-details">
+                                    <i class="fas fa-info-circle"></i> Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Libro 4 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <div class="cover-placeholder business">
+                                <span>N</span>
+                            </div>
+                            <span class="book-status available">
+                                <i class="fas fa-check"></i> Disponible
+                            </span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Padre rico, padre pobre</h3>
+                            <p class="book-author">Robert T. Kiyosaki</p>
+                            <p class="book-isbn">ISBN: 9788466332121</p>
+                            
+                            <div class="book-meta">
+                                <span class="meta-tag">
+                                    <i class="fas fa-tag"></i> Negocios
+                                </span>
+                                <span class="meta-location">
+                                    <i class="fas fa-map-marker-alt"></i> Campus Principal
+                                </span>
+                            </div>
+                            
+                            <p class="book-description">
+                                Lecciones sobre la mentalidad financiera y cómo lograr la independencia económica.
+                            </p>
+                            
+                            <div class="book-actions">
+                                <button class="btn-details">
+                                    <i class="fas fa-info-circle"></i> Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Libro 5 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <div class="cover-placeholder literature">
+                                <span>D</span>
+                            </div>
+                            <span class="book-status loaned">
+                                <i class="fas fa-book"></i> En préstamo
+                            </span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Don Quijote de la Mancha</h3>
+                            <p class="book-author">Miguel de Cervantes</p>
+                            <p class="book-isbn">ISBN: 9788467037254</p>
+                            
+                            <div class="book-meta">
+                                <span class="meta-tag">
+                                    <i class="fas fa-tag"></i> Literatura Clásica
+                                </span>
+                                <span class="meta-location">
+                                    <i class="fas fa-map-marker-alt"></i> Campus Principal
+                                </span>
+                            </div>
+                            
+                            <p class="book-description">
+                                La obra cumbre de la literatura española que narra las aventuras del ingenioso hidalgo.
+                            </p>
+                            
+                            <div class="book-actions">
+                                <button class="btn-details">
+                                    <i class="fas fa-info-circle"></i> Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Libro 6 -->
+                    <div class="book-card">
+                        <div class="book-cover">
+                            <div class="cover-placeholder art">
+                                <span>A</span>
+                            </div>
+                            <span class="book-status available">
+                                <i class="fas fa-check"></i> Disponible
+                            </span>
+                        </div>
+                        <div class="book-info">
+                            <h3 class="book-title">Historia del arte</h3>
+                            <p class="book-author">E. H. Gombrich</p>
+                            <p class="book-isbn">ISBN: 9788420674205</p>
+                            
+                            <div class="book-meta">
+                                <span class="meta-tag">
+                                    <i class="fas fa-tag"></i> Arte
+                                </span>
+                                <span class="meta-location">
+                                    <i class="fas fa-map-marker-alt"></i> Centro de Holguín
+                                </span>
+                            </div>
+                            
+                            <p class="book-description">
+                                Introducción completa al arte occidental desde la prehistoria hasta el siglo XX.
+                            </p>
+                            
+                            <div class="book-actions">
+                                <button class="btn-details">
+                                    <i class="fas fa-info-circle"></i> Ver Detalles
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Paginación -->
+                <div class="pagination">
+                    <a href="#" class="page-link disabled">
+                        <i class="fas fa-chevron-left"></i> Anterior
+                    </a>
+                    <a href="#" class="page-link active">1</a>
+                    <a href="#" class="page-link">2</a>
+                    <a href="#" class="page-link">3</a>
+                    <a href="#" class="page-link">4</a>
+                    <a href="#" class="page-link">5</a>
+                    <a href="#" class="page-link">
+                        Siguiente <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+     

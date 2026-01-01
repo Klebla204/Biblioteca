@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     {%load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Préstamos Bibliotecarios</title>
+    <link rel="stylesheet" href="{% static 'css/login_style.css' %}">
+</head>
+<body>
+    <div class="login">
+        <h1 class="login__title">Sistema de Gestión de Préstamos Bibliotecarios</h1>
+        
+        <form class="login__form">
+            <div class="login__field">
+                <input type="text" id="username" class="login__input" placeholder=" " required>
+                <label for="username" class="login__label">Nombre de usuario</label>
+            </div>
+            
+            <div class="login__field">
+                <input type="password" id="password" class="login__input" placeholder=" " required>
+                <label for="password" class="login__label">Contraseña</label>
+            </div>
+            
+            <button type="submit" class="login__button">Iniciar sesión</button>
+        </form>
+        
+        <div class="login__info">
+            <p class="login__text">Iniciar sesión como administrador, bibliotecario o estudiante</p>
+            <a href="#" class="login__link">¿Olvidaste tu contraseña ?</a>
+        </div>
+    </div>
+</body>
+</html>
