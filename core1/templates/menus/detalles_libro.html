@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Libro - Administrador</title>
+    <link rel="stylesheet" href="menus.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR DE ADMINISTRADOR -->
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3 class="user-name">Administrador</h3>
+                <p class="user-role">Sistema Bibliotecario</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="menu_admin.html">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gestion_usuarios.html">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="gestion_libros.html">
+                            <i class="fas fa-book nav-icon"></i>
+                            <span class="nav-text">Libros</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reportes.html">
+                            <i class="fas fa-chart-bar nav-icon"></i>
+                            <span class="nav-text">Consultas y Reportes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="window.location.href='login.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1 class="page-title">Detalles del Libro</h1>
+                <div class="header-actions">
+                    <a href="editar_libro.html" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Editar Libro
+                    </a>
+                    <a href="gestion_libros.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </a>
+                </div>
+            </header>
+            
+            <!-- INFORMACIÓN DEL LIBRO -->
+            <div class="content-card">
+                <div class="book-header">
+                    <div class="d-flex align-center gap-20">
+                        <div class="book-cover">
+                            <i class="fas fa-book fa-4x" style="color: #3498db;"></i>
+                        </div>
+                        <div>
+                            <h2>Cien años de soledad</h2>
+                            <p class="book-author"><strong>Autor:</strong> Gabriel García Márquez</p>
+                            <div class="d-flex gap-10 mt-10">
+                                <span class="badge badge-primary">Novela</span>
+                                <span class="badge badge-success">Disponible</span>
+                                <span class="badge">ID: LIB-001</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="user-details-grid mt-20">
+                    <div class="detail-card">
+                        <h3><i class="fas fa-info-circle"></i> Información Básica</h3>
+                        <p><strong>ISBN:</strong> 978-3-16-148410-0</p>
+                        <p><strong>Año de publicación:</strong> 1967</p>
+                        <p><strong>Editorial:</strong> Editorial Sudamericana</p>
+                        <p><strong>Idioma:</strong> Español</p>
+                        <p><strong>Páginas:</strong> 417</p>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <h3><i class="fas fa-chart-bar"></i> Inventario</h3>
+                        <p><strong>Cantidad total:</strong> 4 ejemplares</p>
+                        <p><strong>Disponibles:</strong> 2 ejemplares</p>
+                        <p><strong>Prestados:</strong> 2 ejemplares</p>
+                        <p><strong>Reservados:</strong> 0 ejemplares</p>
+                        <p><strong>Estado:</strong> Disponible</p>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <h3><i class="fas fa-history"></i> Estadísticas</h3>
+                        <p><strong>Total préstamos:</strong> 45 veces</p>
+                        <p><strong>Reservas activas:</strong> 2</p>
+                        <p><strong>Calificación promedio:</strong> 4.8/5.0</p>
+                        <p><strong>Último préstamo:</strong> 15/01/2024</p>
+                        <p><strong>Fecha de ingreso:</strong> 10/03/2023</p>
+                    </div>
+                </div>
+                
+                <div class="content-card mt-20">
+                    <h3><i class="fas fa-align-left"></i> Descripción</h3>
+                    <p>La novela cuenta la historia de la familia Buendía a lo largo de siete generaciones en el pueblo ficticio de Macondo, fundado por José Arcadio Buendía y Úrsula Iguarán. La obra es considerada una de las más representativas del realismo mágico y ha sido traducida a más de 35 idiomas.</p>
+                </div>
+                
+                <div class="content-card mt-20">
+                    <h3><i class="fas fa-users"></i> Préstamos Actuales</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Fecha Préstamo</th>
+                                <th>Fecha Devolución</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Juan Pérez</td>
+                                <td>15/01/2024</td>
+                                <td>29/01/2024</td>
+                                <td><span class="badge badge-primary">Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td>María García</td>
+                                <td>10/01/2024</td>
+                                <td>24/01/2024</td>
+                                <td><span class="badge badge-primary">Activo</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="d-flex gap-10 mt-20">
+                    <a href="editar_libro.html" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Editar Libro
+                    </a>
+                    <a href="eliminar_libro.html" class="btn btn-danger">
+                        <i class="fas fa-trash"></i> Eliminar Libro
+                    </a>
+                    <a href="gestion_libros.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver al catálogo
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

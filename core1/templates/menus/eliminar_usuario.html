@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Usuario - Administrador</title>
+    <link rel="stylesheet" href="menus.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3 class="user-name">Administrador</h3>
+                <p class="user-role">Sistema Bibliotecario</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="dashboard_admin.html">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="gestion_usuarios.html">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gestion_libros.html">
+                            <i class="fas fa-book nav-icon"></i>
+                            <span class="nav-text">Libros</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reportes.html">
+                            <i class="fas fa-chart-bar nav-icon"></i>
+                            <span class="nav-text">Consultas y Reportes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="window.location.href='login.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="main-header">
+                <h1 class="page-title">Eliminar Usuario</h1>
+            </header>
+            
+            <div class="content-card">
+                <h2>Confirmar Eliminación</h2>
+                
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>¡Advertencia!</strong> Esta acción no se puede deshacer.
+                </div>
+                
+                <div class="user-info-card">
+                    <div class="user-avatar-small">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-details">
+                        <h3>Juan Pérez</h3>
+                        <p><strong>Correo:</strong> juan.perez@example.com</p>
+                        <p><strong>Rol:</strong> Estudiante</p>
+                        <p><strong>Fecha de registro:</strong> 15/03/2024</p>
+                    </div>
+                </div>
+                
+                <p class="mt-20 mb-20">¿Está seguro que desea eliminar permanentemente este usuario del sistema?</p>
+                
+                <div class="d-flex gap-10">
+                    <button class="btn btn-danger" onclick="confirmarEliminacion()">
+                        <i class="fas fa-trash"></i> Sí, eliminar usuario
+                    </button>
+                    <a href="gestion_usuarios.html" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancelar
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function confirmarEliminacion() {
+            if(confirm("¿Está completamente seguro de eliminar este usuario? Esta acción es permanente.")) {
+                alert("Usuario eliminado correctamente");
+                window.location.href = "gestion_usuarios.html";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles de Usuario - Administrador</title>
+    <link rel="stylesheet" href="menus.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3 class="user-name">Administrador</h3>
+                <p class="user-role">Sistema Bibliotecario</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="dashboard_admin.html">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="gestion_usuarios.html">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gestion_libros.html">
+                            <i class="fas fa-book nav-icon"></i>
+                            <span class="nav-text">Libros</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reportes.html">
+                            <i class="fas fa-chart-bar nav-icon"></i>
+                            <span class="nav-text">Consultas y Reportes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="window.location.href='login.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+        
+        <main class="main-content">
+            <header class="main-header">
+                <h1 class="page-title">Detalles del Usuario</h1>
+                <div class="header-actions">
+                    <a href="editar_usuario.html" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Editar
+                    </a>
+                </div>
+            </header>
+            
+            <div class="content-card">
+                <div class="user-profile-header">
+                    <div class="user-avatar-large">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-profile-info">
+                        <h2>Juan Pérez</h2>
+                        <p class="user-email">juan.perez@example.com</p>
+                        <span class="badge badge-primary">Estudiante</span>
+                        <span class="badge badge-success">Activo</span>
+                    </div>
+                </div>
+                
+                <div class="user-details-grid mt-20">
+                    <div class="detail-card">
+                        <h3><i class="fas fa-info-circle"></i> Información Personal</h3>
+                        <p><strong>ID:</strong> USR-001</p>
+                        <p><strong>Fecha de registro:</strong> 15/03/2024</p>
+                        <p><strong>Último acceso:</strong> Hoy, 10:30 AM</p>
+                    </div>
+                    
+                    <div class="detail-card">
+                        <h3><i class="fas fa-book-reader"></i> Actividad</h3>
+                        <p><strong>Préstamos activos:</strong> 2</p>
+                        <p><strong>Total préstamos:</strong> 15</p>
+                        <p><strong>Libros reservados:</strong> 1</p>
+                    </div>
+                </div>
+                
+                <div class="content-card mt-20">
+                    <h3><i class="fas fa-history"></i> Historial Reciente</h3>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Libro</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Introducción a Python</td>
+                                <td>10/04/2024</td>
+                                <td><span class="badge badge-primary">Activo</span></td>
+                            </tr>
+                            <tr>
+                                <td>Base de Datos Avanzadas</td>
+                                <td>05/04/2024</td>
+                                <td><span class="badge badge-success">Devuelto</span></td>
+                            </tr>
+                            <tr>
+                                <td>Diseño UI/UX</td>
+                                <td>01/04/2024</td>
+                                <td><span class="badge badge-success">Devuelto</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="d-flex gap-10 mt-20">
+                    <a href="gestion_usuarios.html" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i> Volver a la lista
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

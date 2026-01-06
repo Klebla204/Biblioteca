@@ -7,6 +7,7 @@ from django.urls import reverse
 from .models import Libro
 from django.core.paginator import Paginator
 from .models import Solicitud
+from django.contrib.auth import logout
 
 
 class CustomLoginView(LoginView):
@@ -22,9 +23,9 @@ class CustomLoginView(LoginView):
         return reverse('est_menu')
        return '/'
        
-       
-    
-    
+def logout_view(request):
+    logout(request)
+    return redirect('catalog')   
     
 def pagina_view(request):
     return render(request, 'biblioteca\index.html')
@@ -46,9 +47,7 @@ def solicitar_prestamo(request, libro_id):
            libro=libro,
            sede=libro.sede
        )
-       return redirect('catalog_view')
-
-
+       return redirect('catalog')
 
 def est_menu(request):
     return render(request,'menus\menu_estudiante.html')
@@ -58,6 +57,13 @@ def biblio_menu(request):
 
 def admin_menu(request):
     return render(request,'menus\menu_adminidtrador.html')
+
+def solicitudes_pendientes(request):
+    solicitudes= Solicitud.objects.filter(expirada=False, fecha_inicio_prestamo__isnull=True)
+    for s in solicitudes:
+        s.check_expiracion()
+        return render(request, 'menus/listasolicitudes.html', {'solicitudes': solicitudes})
+
 
 
 def redirect_after_login(request):

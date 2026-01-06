@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes y Estadísticas - Administrador</title>
+    <link rel="stylesheet" href="menus.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR DE ADMINISTRADOR -->
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3 class="user-name">Administrador</h3>
+                <p class="user-role">Sistema Bibliotecario</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="menu_admin.html">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gestion_usuarios.html">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gestion_libros.html">
+                            <i class="fas fa-book nav-icon"></i>
+                            <span class="nav-text">Libros</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="reportes.html">
+                            <i class="fas fa-chart-bar nav-icon"></i>
+                            <span class="nav-text">Consultas y Reportes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="window.location.href='login.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1 class="page-title">Reportes y Estadísticas</h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="exportarReporte()">
+                        <i class="fas fa-file-export"></i> Exportar Reporte
+                    </button>
+                </div>
+            </header>
+            
+            <!-- MÉTRICAS PRINCIPALES -->
+            <div class="content-card">
+                <h2><i class="fas fa-chart-pie"></i> Métricas Principales</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #3498db;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">120</div>
+                        <div class="stat-label">Usuarios</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #2ecc71;">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <div class="stat-number">35</div>
+                        <div class="stat-label">Préstamos activos</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #9b59b6;">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-number">220</div>
+                        <div class="stat-label">Libros disponibles</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GRÁFICO DE PRÉSTAMOS MENSUALES -->
+            <div class="content-card">
+                <h2><i class="fas fa-chart-line"></i> Préstamos Mensuales</h2>
+                <div class="grafico-container">
+                    <div class="grafico-barras">
+                        <div class="barra-mes">
+                            <div class="barra-etiqueta">Abr</div>
+                            <div class="barra-valor" style="height: 60px; background: #3498db;"></div>
+                            <div class="barra-numero">40</div>
+                        </div>
+                        <div class="barra-mes">
+                            <div class="barra-etiqueta">Mar</div>
+                            <div class="barra-valor" style="height: 90px; background: #3498db;"></div>
+                            <div class="barra-numero">30</div>
+                        </div>
+                        <div class="barra-mes">
+                            <div class="barra-etiqueta">Jun</div>
+                            <div class="barra-valor" style="height: 120px; background: #3498db;"></div>
+                            <div class="barra-numero">20</div>
+                        </div>
+                        <div class="barra-mes">
+                            <div class="barra-etiqueta">Jul</div>
+                            <div class="barra-valor" style="height: 150px; background: #3498db;"></div>
+                            <div class="barra-numero">10</div>
+                        </div>
+                        <div class="barra-mes">
+                            <div class="barra-etiqueta">Oct</div>
+                            <div class="barra-valor" style="height: 30px; background: #3498db;"></div>
+                            <div class="barra-numero">0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TOP 10 LIBROS MÁS PRESTADOS -->
+            <div class="content-card">
+                <h2><i class="fas fa-star"></i> Top 10 Libros Más Prestados</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Título del Libro</th>
+                            <th>Autor</th>
+                            <th>Préstamos</th>
+                            <th>Calificación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Cien años de soledad</strong></td>
+                            <td>Gabriel García Márquez</td>
+                            <td>45</td>
+                            <td><span class="badge badge-success">4.8</span></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>1984</strong></td>
+                            <td>George Orwell</td>
+                            <td>38</td>
+                            <td><span class="badge badge-success">4.7</span></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>El Gran Gatsby</strong></td>
+                            <td>F. Scott Fitzgerald</td>
+                            <td>32</td>
+                            <td><span class="badge badge-success">4.6</span></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Don Quijote de la Mancha</strong></td>
+                            <td>Miguel de Cervantes</td>
+                            <td>28</td>
+                            <td><span class="badge badge-success">4.9</span></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Orgullo y prejuicio</strong></td>
+                            <td>Jane Austen</td>
+                            <td>25</td>
+                            <td><span class="badge badge-success">4.5</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- ALERTAS DEL SISTEMA -->
+            <div class="content-card">
+                <h2><i class="fas fa-exclamation-triangle"></i> Alertas del Sistema</h2>
+                <div class="alertas-container">
+                    <div class="alerta-item alerta-peligro">
+                        <div class="alerta-icono">
+                            <i class="fas fa-times-circle"></i>
+                        </div>
+                        <div class="alerta-contenido">
+                            <h3>Préstamos vencidos</h3>
+                            <p>Hay 2 préstamos que han superado la fecha de devolución.</p>
+                            <a href="#" class="btn btn-sm btn-danger">Ver detalles</a>
+                        </div>
+                    </div>
+                    
+                    <div class="alerta-item alerta-advertencia">
+                        <div class="alerta-icono">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="alerta-contenido">
+                            <h3>Libros bajos en inventario</h3>
+                            <p>5 libros tienen menos de 3 ejemplares disponibles.</p>
+                            <a href="#" class="btn btn-sm btn-warning">Revisar inventario</a>
+                        </div>
+                    </div>
+                    
+                    <div class="alerta-item alerta-info">
+                        <div class="alerta-icono">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="alerta-contenido">
+                            <h3>Usuarios inactivos</h3>
+                            <p>15 usuarios no han realizado préstamos en los últimos 3 meses.</p>
+                            <a href="#" class="btn btn-sm btn-primary">Ver usuarios</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FILTROS DE REPORTES -->
+            <div class="content-card">
+                <h2><i class="fas fa-filter"></i> Filtros de Reportes</h2>
+                <form class="filtros-form">
+                    <div class="filtros-grid">
+                        <div class="form-group">
+                            <label for="fecha-inicio">Fecha Inicio</label>
+                            <input type="date" id="fecha-inicio" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="fecha-fin">Fecha Fin</label>
+                            <input type="date" id="fecha-fin" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="categoria">Categoría</label>
+                            <select id="categoria" class="form-control">
+                                <option value="">Todas las categorías</option>
+                                <option value="novela">Novela</option>
+                                <option value="ciencia-ficcion">Ciencia Ficción</option>
+                                <option value="clasico">Clásico</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="sede">Sede</label>
+                            <select id="sede" class="form-control">
+                                <option value="">Todas las sedes</option>
+                                <option value="holguin">Holguín - Central</option>
+                                <option value="habana">La Habana</option>
+                                <option value="santiago">Santiago de Cuba</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex gap-10 mt-20">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-filter"></i> Aplicar Filtros
+                        </button>
+                        <button type="reset" class="btn btn-secondary">
+                            <i class="fas fa-redo"></i> Limpiar Filtros
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- RESUMEN DE ACTIVIDAD -->
+            <div class="content-card">
+                <h2><i class="fas fa-clipboard-list"></i> Resumen de Actividad</h2>
+                <div class="resumen-grid">
+                    <div class="resumen-card">
+                        <h3>Préstamos Hoy</h3>
+                        <div class="resumen-numero">15</div>
+                        <div class="resumen-tendencia tendencia-positiva">
+                            <i class="fas fa-arrow-up"></i> 10% vs ayer
+                        </div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Devoluciones Hoy</h3>
+                        <div class="resumen-numero">8</div>
+                        <div class="resumen-tendencia tendencia-negativa">
+                            <i class="fas fa-arrow-down"></i> 5% vs ayer
+                        </div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Nuevos Usuarios</h3>
+                        <div class="resumen-numero">3</div>
+                        <div class="resumen-tendencia tendencia-positiva">
+                            <i class="fas fa-arrow-up"></i> 15% vs mes pasado
+                        </div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Libros Agregados</h3>
+                        <div class="resumen-numero">12</div>
+                        <div class="resumen-tendencia tendencia-positiva">
+                            <i class="fas fa-arrow-up"></i> 20% vs mes pasado
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function exportarReporte() {
+            if(confirm("¿Desea exportar el reporte actual en formato PDF?")) {
+                alert("Reporte exportado correctamente. Se descargará en unos momentos.");
+                // Aquí iría la lógica para exportar el reporte
+            }
+        }
+        
+        // Simular datos del gráfico
+        function actualizarGrafico() {
+            // Esta función simularía la actualización del gráfico con datos reales
+            console.log("Actualizando gráfico...");
+        }
+        
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            actualizarGrafico();
+        });
+    </script>
+</body>
+</html>

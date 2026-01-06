@@ -39,7 +39,7 @@ class Solicitud(models.Model):
     sede= models.ForeignKey('Sede', on_delete= models.CASCADE)
     fecha_solicitud= models.DateField(auto_now_add=True)
     fecha_expiracion= models.DateField(default=date.today()+timedelta(days=3))
-    expirada= models.BooleanField(dafault=False)
+    expirada= models.BooleanField(default=False)
     
     def check_expiracion(self):
         if date.today()> self.fecha_expiracion and not self.expirada:

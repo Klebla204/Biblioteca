@@ -16,12 +16,12 @@
                 <h2>Biblioteca UHO</h2>
             </div>
             <ul class="nav-menu">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="#catalogo" class="active">Catálogo</a></li>
+                <li><a href={% url 'index' %}>Inicio</a></li>
+                <li><a href={% url 'catalog' %} class="active">Catálogo</a></li>
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#contacto">Contacto</a></li>
-                <li><a href="login.html" class="login-btn">Acceder</a></li>
+                <li><a href={% url 'login'%} class="login-btn">Acceder</a></li>
             </ul>
         </nav>
     </header>
@@ -172,7 +172,7 @@
                                 <span>C</span>
                             </div>
                             <span class="book-status available">
-                                <i class="fas fa-check"></i> Disponible
+                                <i class="fas fa-check"></i> {{libro.cant_disponible}}
                             </span>
                         </div>
                         <div class="book-info">
@@ -197,7 +197,13 @@
                                 <button class="btn-details">
                                     <i class="fas fa-info-circle"> 
                                         
-                                    </i> Solicitar Prestamo
+                                    </i> 
+                                    {%if user.is_authenticated %} <a href = {% url 'solicitar_prestamo' libro.id %} class="btn-request">Solicitar prestamo </a>
+                                    {% else %} <a href = {% url 'login'%}?next={% url 'solicitar_prestamo' libro.id %} class="btn-request">Solicitar prestamo </a>
+                                    {% endif %}
+                                    
+                                    
+
                                 </button>
                             </div>
                         </div>
@@ -218,4 +224,5 @@
                         Siguiente <i class="fas fa-chevron-right"></i>
                     </a>
                 </div>
+                <p> Usuario autenticado: {{user.is_authenticated}}</p>
      

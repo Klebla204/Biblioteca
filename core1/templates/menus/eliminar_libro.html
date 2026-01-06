@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Libro - Administrador</title>
+    <link rel="stylesheet" href="menus.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR DE ADMINISTRADOR -->
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3 class="user-name">Administrador</h3>
+                <p class="user-role">Sistema Bibliotecario</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="menu_admin.html">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="gestion_usuarios.html">
+                            <i class="fas fa-users nav-icon"></i>
+                            <span class="nav-text">Usuarios</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="gestion_libros.html">
+                            <i class="fas fa-book nav-icon"></i>
+                            <span class="nav-text">Libros</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reportes.html">
+                            <i class="fas fa-chart-bar nav-icon"></i>
+                            <span class="nav-text">Consultas y Reportes</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn-logout" onclick="window.location.href='login.html'">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Cerrar sesión</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1 class="page-title">Eliminar Libro</h1>
+            </header>
+            
+            <div class="content-card">
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <strong>¡ADVERTENCIA!</strong> Esta acción no se puede deshacer.
+                </div>
+                
+                <div class="book-info-card">
+                    <div class="d-flex align-center gap-20">
+                        <div class="book-cover-small">
+                            <i class="fas fa-book fa-3x" style="color: #3498db;"></i>
+                        </div>
+                        <div class="book-details">
+                            <h3>Cien años de soledad</h3>
+                            <p><strong>Autor:</strong> Gabriel García Márquez</p>
+                            <p><strong>Categoría:</strong> Novela</p>
+                            <p><strong>Cantidad disponible:</strong> 2 de 4 ejemplares</p>
+                            <p><strong>Préstamos activos:</strong> 2 ejemplares</p>
+                            <p><strong>Estado:</strong> <span class="badge badge-success">Disponible</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="margin: 20px 0; padding: 15px; background: #fff3cd; border-radius: 5px; border-left: 4px solid #f39c12;">
+                    <strong><i class="fas fa-exclamation-circle" style="color: #f39c12;"></i> Consideraciones importantes:</strong>
+                    <ul style="margin: 10px 0 0 20px;">
+                        <li>Hay 2 préstamos activos de este libro</li>
+                        <li>2 usuarios tienen reservas pendientes</li>
+                        <li>El libro ha sido prestado 45 veces en total</li>
+                        <li>Esta acción eliminará todos los registros asociados</li>
+                    </ul>
+                </div>
+                
+                <p style="margin: 20px 0; color: #e74c3c; font-weight: 600;">
+                    <i class="fas fa-exclamation-circle"></i> ¿Está seguro que desea eliminar permanentemente este libro del sistema?
+                </p>
+                
+                <div class="d-flex gap-10">
+                    <button class="btn btn-danger" onclick="confirmarEliminacion()">
+                        <i class="fas fa-trash"></i> Sí, eliminar libro
+                    </button>
+                    <a href="detalles_libro.html" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancelar
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function confirmarEliminacion() {
+            if(confirm("¿Está completamente seguro de eliminar este libro? Esta acción es permanente y afectará a usuarios con préstamos activos.")) {
+                alert("Libro eliminado correctamente");
+                window.location.href = "gestion_libros.html";
+            }
+        }
+    </script>
+</body>
+</html>
