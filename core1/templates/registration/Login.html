@@ -11,15 +11,16 @@
     <div class="login">
         <h1 class="login__title">Sistema de Gestión de Préstamos Bibliotecarios</h1>
         
-        <form class="login__form">
+        <form class="login__form" method= "post" action="{% url 'login' %}">
+             {% csrf_token %}
             <div class="login__field">
-                <input type="text" id="username" class="login__input" placeholder=" " required>
-                <label for="username" class="login__label">Nombre de usuario</label>
+                <input type="text" name="username" id="username" class="login__input" placeholder=" " required>
+                <label for="username" name="username" class="login__label">Nombre de usuario</label>
             </div>
             
             <div class="login__field">
-                <input type="password" id="password" class="login__input" placeholder=" " required>
-                <label for="password" class="login__label">Contraseña</label>
+                <input type="password" name="password" id="password" class="login__input" placeholder=" " required>
+                <label for="password" name="password" class="login__label">Contraseña</label>
             </div>
             
             <button type="submit" class="login__button">Iniciar sesión</button>

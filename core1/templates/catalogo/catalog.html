@@ -165,6 +165,7 @@
                 
                 <div class="books-grid">
                     <!-- Libro 1 -->
+                    {% for libro in libros %}
                     <div class="book-card">
                         <div class="book-cover">
                             <div class="cover-placeholder literature">
@@ -175,212 +176,34 @@
                             </span>
                         </div>
                         <div class="book-info">
-                            <h3 class="book-title">Cien años de soledad</h3>
-                            <p class="book-author">Gabriel García Márquez</p>
-                            <p class="book-isbn">ISBN: 9788437604947</p>
+                            <h3 class="book-title">{{libro.titulo}}</h3>
+                            <p class="book-author">{{libro.autor}}</p>
+                            <p class="book-isbn">ISBN: {{libro.isbn}}</p>
                             
                             <div class="book-meta">
                                 <span class="meta-tag">
-                                    <i class="fas fa-tag"></i> Novela
+                                    <i class="fas fa-tag"></i> {{libro.categoria}}
                                 </span>
                                 <span class="meta-location">
-                                    <i class="fas fa-map-marker-alt"></i> Campus Principal
+                                    <i class="fas fa-map-marker-alt"></i> {{libro.sede.nombre}}
                                 </span>
                             </div>
                             
                             <p class="book-description">
-                                Una saga familiar que narra la historia de la familia Buendía en el pueblo ficticio de Macondo.
+                               {{libro.descripcion}}
                             </p>
                             
                             <div class="book-actions">
                                 <button class="btn-details">
-                                    <i class="fas fa-info-circle"></i> Ver Detalles
+                                    <i class="fas fa-info-circle"> 
+                                        
+                                    </i> Solicitar Prestamo
                                 </button>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Libro 2 -->
-                    <div class="book-card">
-                        <div class="book-cover">
-                            <div class="cover-placeholder science">
-                                <span>B</span>
-                            </div>
-                            <span class="book-status reserved">
-                                <i class="fas fa-clock"></i> Reservado
-                            </span>
-                        </div>
-                        <div class="book-info">
-                            <h3 class="book-title">Breve historia del tiempo</h3>
-                            <p class="book-author">Stephen Hawking</p>
-                            <p class="book-isbn">ISBN: 9788478809111</p>
-                            
-                            <div class="book-meta">
-                                <span class="meta-tag">
-                                    <i class="fas fa-tag"></i> Ciencia
-                                </span>
-                                <span class="meta-location">
-                                    <i class="fas fa-map-marker-alt"></i> Campus Sur
-                                </span>
-                            </div>
-                            
-                            <p class="book-description">
-                                Explicación de los conceptos fundamentales del universo, desde el Big Bang hasta los agujeros negros.
-                            </p>
-                            
-                            <div class="book-actions">
-                                <button class="btn-details">
-                                    <i class="fas fa-info-circle"></i> Ver Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Libro 3 -->
-                    <div class="book-card">
-                        <div class="book-cover">
-                            <div class="cover-placeholder technology">
-                                <span>P</span>
-                            </div>
-                            <span class="book-status available">
-                                <i class="fas fa-check"></i> Disponible
-                            </span>
-                        </div>
-                        <div class="book-info">
-                            <h3 class="book-title">Python para todos</h3>
-                            <p class="book-author">Charles R. Severance</p>
-                            <p class="book-isbn">ISBN: 9788460824515</p>
-                            
-                            <div class="book-meta">
-                                <span class="meta-tag">
-                                    <i class="fas fa-tag"></i> Tecnología
-                                </span>
-                                <span class="meta-location">
-                                    <i class="fas fa-map-marker-alt"></i> Centro de Holguín
-                                </span>
-                            </div>
-                            
-                            <p class="book-description">
-                                Introducción completa a la programación en Python para principiantes y programadores intermedios.
-                            </p>
-                            
-                            <div class="book-actions">
-                                <button class="btn-details">
-                                    <i class="fas fa-info-circle"></i> Ver Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Libro 4 -->
-                    <div class="book-card">
-                        <div class="book-cover">
-                            <div class="cover-placeholder business">
-                                <span>N</span>
-                            </div>
-                            <span class="book-status available">
-                                <i class="fas fa-check"></i> Disponible
-                            </span>
-                        </div>
-                        <div class="book-info">
-                            <h3 class="book-title">Padre rico, padre pobre</h3>
-                            <p class="book-author">Robert T. Kiyosaki</p>
-                            <p class="book-isbn">ISBN: 9788466332121</p>
-                            
-                            <div class="book-meta">
-                                <span class="meta-tag">
-                                    <i class="fas fa-tag"></i> Negocios
-                                </span>
-                                <span class="meta-location">
-                                    <i class="fas fa-map-marker-alt"></i> Campus Principal
-                                </span>
-                            </div>
-                            
-                            <p class="book-description">
-                                Lecciones sobre la mentalidad financiera y cómo lograr la independencia económica.
-                            </p>
-                            
-                            <div class="book-actions">
-                                <button class="btn-details">
-                                    <i class="fas fa-info-circle"></i> Ver Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Libro 5 -->
-                    <div class="book-card">
-                        <div class="book-cover">
-                            <div class="cover-placeholder literature">
-                                <span>D</span>
-                            </div>
-                            <span class="book-status loaned">
-                                <i class="fas fa-book"></i> En préstamo
-                            </span>
-                        </div>
-                        <div class="book-info">
-                            <h3 class="book-title">Don Quijote de la Mancha</h3>
-                            <p class="book-author">Miguel de Cervantes</p>
-                            <p class="book-isbn">ISBN: 9788467037254</p>
-                            
-                            <div class="book-meta">
-                                <span class="meta-tag">
-                                    <i class="fas fa-tag"></i> Literatura Clásica
-                                </span>
-                                <span class="meta-location">
-                                    <i class="fas fa-map-marker-alt"></i> Campus Principal
-                                </span>
-                            </div>
-                            
-                            <p class="book-description">
-                                La obra cumbre de la literatura española que narra las aventuras del ingenioso hidalgo.
-                            </p>
-                            
-                            <div class="book-actions">
-                                <button class="btn-details">
-                                    <i class="fas fa-info-circle"></i> Ver Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Libro 6 -->
-                    <div class="book-card">
-                        <div class="book-cover">
-                            <div class="cover-placeholder art">
-                                <span>A</span>
-                            </div>
-                            <span class="book-status available">
-                                <i class="fas fa-check"></i> Disponible
-                            </span>
-                        </div>
-                        <div class="book-info">
-                            <h3 class="book-title">Historia del arte</h3>
-                            <p class="book-author">E. H. Gombrich</p>
-                            <p class="book-isbn">ISBN: 9788420674205</p>
-                            
-                            <div class="book-meta">
-                                <span class="meta-tag">
-                                    <i class="fas fa-tag"></i> Arte
-                                </span>
-                                <span class="meta-location">
-                                    <i class="fas fa-map-marker-alt"></i> Centro de Holguín
-                                </span>
-                            </div>
-                            
-                            <p class="book-description">
-                                Introducción completa al arte occidental desde la prehistoria hasta el siglo XX.
-                            </p>
-                            
-                            <div class="book-actions">
-                                <button class="btn-details">
-                                    <i class="fas fa-info-circle"></i> Ver Detalles
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
+                    {% endfor %}
+                   
                 <!-- Paginación -->
                 <div class="pagination">
                     <a href="#" class="page-link disabled">

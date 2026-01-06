@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {%load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador - Biblioteca UHO</title>
+    <link rel="stylesheet" href="{% static 'css/menus.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/menus_style.css' %}">
+   
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR DE ADMINISTRADOR -->
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3 class="user-name">{{request.user.get_full_name | default:request.user.username}}</h3>
+                <p class="user-role">Administrador del Sistema</p>
+                
+                <div class="system-status">
+                    <span class="status-dot active"></span>
+                    <span>Sistema Activo</span>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <h4 class="section-title">Administración Central</h4>
+                    <ul class="nav-list">
+                        <li class="nav-item active">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-home"></i></span>
+                                <span class="nav-text">Dashboard Central</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-users"></i></span>
+                                <span class="nav-text">Gestión de Usuarios</span>
+                                <span class="badge">2,450</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-user-lock"></i></span>
+                                <span class="nav-text">Roles y Permisos</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-building"></i></span>
+                                <span class="nav-text">Gestión de Sedes</span>
+                                <span class="badge">5</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 class="section-title">Configuración del Sistema</h4>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-cog"></i></span>
+                                <span class="nav-text">Reglas de Préstamo</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-bell"></i></span>
+                                <span class="nav-text">Config. Notificaciones</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-link"></i></span>
+                                <span class="nav-text">Integraciones</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-database"></i></span>
+                                <span class="nav-text">Backup y Restauración</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 class="section-title">Reportes Avanzados</h4>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-chart-bar"></i></span>
+                                <span class="nav-text">Reportes Globales</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-chart-line"></i></span>
+                                <span class="nav-text">Analytics Avanzados</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-file-export"></i></span>
+                                <span class="nav-text">Exportación de Datos</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-eye"></i></span>
+                                <span class="nav-text">Auditoría del Sistema</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h4 class="section-title">Mantenimiento</h4>
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-book"></i></span>
+                                <span class="nav-text">Catálogo Principal</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-pause-circle"></i></span>
+                                <span class="nav-text">Suspensiones</span>
+                                <span class="badge badge-warning">8</span>
+                            </a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a href="#">
+                                <span class="nav-icon"><i class="fas fa-clipboard-list"></i></span>
+                                <span class="nav-text">Logs del Sistema</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="system-info">
+                    <p>v2.4.1 • Último acceso: Hoy 10:30 AM</p>
+                    <p>Usuarios activos: 42</p>
+                </div>
+                
+                <button class="btn-logout">
+                    <span class="logout-icon"><i class="fas fa-sign-out-alt"></i></span>
+                    <span>Cerrar Sesión</span>
+                </button>
+            </div>
+        </aside>
+        
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1 class="page-title">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Panel de Control Administrativo
+                </h1>
+                
+                <div class="header-actions">
+                    <a href="#" class="btn-action">
+                        <i class="fas fa-cogs"></i>
+                        Configuración
+                    </a>
+                    <a href="#" class="btn-action">
+                        <i class="fas fa-redo"></i>
+                        Sincronizar LDAP
+                    </a>
+                </div>
+            </header>
+            
+            <!-- MÉTRICAS DEL SISTEMA -->
+            <div class="content-card">
+                <h3><i class="fas fa-chart-network"></i> Estado General del Sistema</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-card fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-number">2,450</div>
+                        <div class="stat-label">Usuarios Totales</div>
+                    </div>
+                    
+                    <div class="stat-card fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-number">5,217</div>
+                        <div class="stat-label">Libros en Sistema</div>
+                    </div>
+                    
+                    <div class="stat-card fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <div class="stat-number">128</div>
+                        <div class="stat-label">Préstamos Hoy</div>
+                    </div>
+                    
+                    <div class="stat-card fade-in">
+                        <div class="stat-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Disponibilidad</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ALERTAS DEL SISTEMA -->
+            <div class="content-card">
+                <h3><i class="fas fa-exclamation-circle"></i> Alertas del Sistema</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: #fadbd8; padding: 20px; border-radius: 10px; border-left: 5px solid #e74c3c;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <i class="fas fa-times-circle" style="color: #e74c3c; font-size: 24px; margin-right: 15px;"></i>
+                            <h4 style="margin: 0; color: #c0392b;">Sistema ABC</h4>
+                        </div>
+                        <p style="color: #7f8c8d; margin-bottom: 10px;">Conexión fallida - Última sincronización: Hace 3 horas</p>
+                        <button style="background: #e74c3c; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">Reintentar</button>
+                    </div>
+                    
+                    <div style="background: #fef9e7; padding: 20px; border-radius: 10px; border-left: 5px solid #f39c12;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <i class="fas fa-exclamation-triangle" style="color: #f39c12; font-size: 24px; margin-right: 15px;"></i>
+                            <h4 style="margin: 0; color: #d35400;">LDAP</h4>
+                        </div>
+                        <p style="color: #7f8c8d; margin-bottom: 10px;">Sincronización pendiente - 15 usuarios nuevos detectados</p>
+                        <button style="background: #f39c12; color: white; border: none; padding: 8px 15px; border-radius: 5px; cursor: pointer;">Sincronizar</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ACTIVIDAD POR SEDE -->
+            <div class="content-card">
+                <h3><i class="fas fa-map-marked-alt"></i> Actividad por Sede</h3>
+                
+                <table class="data-table" style="margin-top: 20px;">
+                    <thead>
+                        <tr>
+                            <th>Sede</th>
+                            <th>Usuarios</th>
+                            <th>Préstamos Hoy</th>
+                            <th>Disponibilidad</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Holguín - Central</strong></td>
+                            <td>1,250</td>
+                            <td>68</td>
+                            <td>92%</td>
+                            <td><span style="color: #2ecc71; font-weight: 600;">● Operativa</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>La Habana</strong></td>
+                            <td>780</td>
+                            <td>45</td>
+                            <td>87%</td>
+                            <td><span style="color: #2ecc71; font-weight: 600;">● Operativa</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Santiago de Cuba</strong></td>
+                            <td>420</td>
+                            <td>15</td>
+                            <td>95%</td>
+                            <td><span style="color: #2ecc71; font-weight: 600;">● Operativa</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
