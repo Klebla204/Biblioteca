@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     {%load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Bibliotecario</title>
+    <link rel="stylesheet" href="{% static 'css/menus.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR DE BIBLIOTECARIO -->
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3 class="user-name">Bibliotecario</h3>
+                <p class="user-role">Sistema Bibliotecario</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a href={% url 'biblio_menu'%}>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Inicio</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a href={% url 'gestion_prestamos'%}>
+                            <i class="fas fa-exchange-alt nav-icon"></i>
+                            <span class="nav-text">Préstamos</span>
+                            <span class="badge badge-warning">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href={% url 'solicitudes_pendientes'%}>
+                            <i class="fas fa-clipboard-list nav-icon"></i>
+                            <span class="nav-text">Solicitudes</span>
+                            <span class="badge badge-alert">3</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn-logout" ><a href = {% url 'logout_view' %}>Cerrar sesion</a>
+                    <i class="fas fa-sign-out-alt"></i>
+                    
+                </button>
+            </div>
+        </aside>
+        
+        <!-- CONTENIDO PRINCIPAL (DASHBOARD) -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1 class="page-title">
+                    <i class="fas fa-tachometer-alt"></i>
+                    Panel del Bibliotecario
+                </h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="actualizarDashboard()">
+                        <i class="fas fa-sync-alt"></i> Actualizar
+                    </button>
+                    
+                </div>
+            </header>
+            
+            <!-- ALERTA URGENTE -->
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>ATENCIÓN:</strong> Hay <strong>5 préstamos atrasados</strong> que requieren atención inmediata.
+            </div>
+            
+            <!-- MÉTRICAS PRINCIPALES -->
+            <div class="content-card">
+                <h2><i class="fas fa-chart-line"></i> Estado Actual</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #3498db;">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <div class="stat-number">42</div>
+                        <div class="stat-label">Préstamos Activos</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e74c3c;">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <div class="stat-number">5</div>
+                        <div class="stat-label">Préstamos Atrasados</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f39c12;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Vencen Hoy</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #2ecc71;">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="stat-number">15</div>
+                        <div class="stat-label">Reservas Pendientes</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- DOS COLUMNAS: PRÉSTAMOS QUE VENCEN HOY + ACCIONES RÁPIDAS -->
+            <div class="d-flex gap-20" style="flex-wrap: wrap;">
+                <!-- COLUMNA IZQUIERDA: PRÉSTAMOS QUE VENCEN HOY -->
+                <div style="flex: 2; min-width: 300px;">
+                    <div class="content-card">
+                        <h2><i class="fas fa-clock"></i> Préstamos que Vencen Hoy</h2>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Estudiante</th>
+                                    <th>Libro</th>
+                                    <th>Hora</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Ana López</strong></td>
+                                    <td>1984</td>
+                                    <td>18:00</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning">
+                                            <i class="fas fa-bell"></i> Recordar
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>María García</strong></td>
+                                    <td>El Gran Gatsby</td>
+                                    <td>18:00</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning">
+                                            <i class="fas fa-bell"></i> Recordar
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Luis Fernández</strong></td>
+                                    <td>Don Quijote</td>
+                                    <td>18:00</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-warning">
+                                            <i class="fas fa-bell"></i> Recordar
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+            
+            </div>
+            
+            <!-- PRÉSTAMOS ATRASADOS -->
+            <div class="content-card">
+                <h2><i class="fas fa-exclamation-triangle"></i> Préstamos Atrasados</h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Estudiante</th>
+                            <th>Libro</th>
+                            <th>Días Atraso</th>
+                            <th>Fecha Vencimiento</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Juan Pérez</strong></td>
+                            <td>Cien años de soledad</td>
+                            <td><span class="badge badge-danger">3 días</span></td>
+                            <td>21/01/2024</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fas fa-check"></i> Devuelto
+                                </button>
+                                <button class="btn btn-sm btn-warning">
+                                    <i class="fas fa-envelope"></i> Alerta
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Carlos Martínez</strong></td>
+                            <td>Base de Datos Avanzadas</td>
+                            <td><span class="badge badge-danger">2 días</span></td>
+                            <td>22/01/2024</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fas fa-check"></i> Devuelto
+                                </button>
+                                <button class="btn btn-sm btn-warning">
+                                    <i class="fas fa-envelope"></i> Alerta
+                                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sofía Ramírez</strong></td>
+                            <td>Historia del Arte</td>
+                            <td><span class="badge badge-danger">1 día</span></td>
+                            <td>23/01/2024</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger">
+                                    <i class="fas fa-check"></i> Devuelto
+                                </button>
+                                <button class="btn btn-sm btn-warning">
+                                    <i class="fas fa-envelope"></i> Alerta
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- ACTIVIDAD RECIENTE -->
+            <div class="content-card">
+                <h2><i class="fas fa-history"></i> Actividad Reciente</h2>
+                <div class="actividad-lista">
+                    <div class="actividad-item">
+                        <div class="actividad-icono">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="actividad-contenido">
+                            <h3>Devolución Exitosa</h3>
+                            <p>Ana González devolvió "Introducción a la Programación"</p>
+                            <span class="actividad-fecha">Hace 15 minutos</span>
+                        </div>
+                    </div>
+                    
+                    <div class="actividad-item">
+                        <div class="actividad-icono">
+                            <i class="fas fa-book-reader"></i>
+                        </div>
+                        <div class="actividad-contenido">
+                            <h3>Nuevo Préstamo Registrado</h3>
+                            <p>Carlos Rodríguez solicitó "Machine Learning Básico"</p>
+                            <span class="actividad-fecha">Hace 45 minutos</span>
+                        </div>
+                    </div>
+                    
+                    <div class="actividad-item">
+                        <div class="actividad-icono">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <div class="actividad-contenido">
+                            <h3>Reserva Aprobada</h3>
+                            <p>Reserva de "Cálculo Diferencial" para Laura Méndez</p>
+                            <span class="actividad-fecha">Hace 2 horas</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ESTADÍSTICAS -->
+            <div class="content-card">
+                <h2><i class="fas fa-chart-pie"></i> Estadísticas del Día</h2>
+                <div class="resumen-grid">
+                    <div class="resumen-card">
+                        <h3>Préstamos Hoy</h3>
+                        <div class="resumen-numero">12</div>
+                        <div class="resumen-tendencia tendencia-positiva">+2 vs ayer</div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Devoluciones Hoy</h3>
+                        <div class="resumen-numero">8</div>
+                        <div class="resumen-tendencia tendencia-positiva">+3 vs ayer</div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Reservas Aprobadas</h3>
+                        <div class="resumen-numero">6</div>
+                        <div class="resumen-tendencia tendencia-positiva">+1 vs ayer</div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Libros Dañados</h3>
+                        <div class="resumen-numero">2</div>
+                        <div class="resumen-tendencia tendencia-negativa">Reportados hoy</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

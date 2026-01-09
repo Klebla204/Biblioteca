@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from datetime import timedelta, date
+from django.utils import timezone
 class CustomUser(AbstractUser):
     ROLE_CHOICES =(
         ('Admin', 'Administrador'),
@@ -47,3 +48,20 @@ class Solicitud(models.Model):
             self.libro.cant_disponible +=1
             self.libro.save()
             self.save()
+            
+            
+class Prestamo(models.Model):
+    estudiante= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="prestamos")
+    libro= models.ForeignKey('Libro', on_delete=models.CASCADE, related_name="prestamos")
+    sede= models.ForeignKey('Sede', on_delete=models.CASCADE)
+    fecha_inicio= models.DateField(default=timezone.now)
+    fecha_fin= models.DateField()
+    activo= models.BooleanField(default=True)
+    def finalizar(self):
+        self.activo=False
+        self.libro.cant_disponible +=1
+        self.libro.save()
+        self.save()
+        def __str__(self):
+            return f"{self.libro.titulo} -> {self.estudiante.username}"
+        

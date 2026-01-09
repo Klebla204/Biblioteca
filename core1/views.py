@@ -6,9 +6,11 @@ from django.contrib.auth.views import LoginView
 from django.urls import reverse
 from .models import Libro
 from django.core.paginator import Paginator
-from .models import Solicitud
+from .models import Solicitud, Prestamo
 from django.contrib.auth import logout
-
+from datetime import timedelta
+from django.utils import timezone
+from .models import CustomUser
 
 class CustomLoginView(LoginView):
    template_name= 'registration/Login.html'
@@ -50,21 +52,36 @@ def solicitar_prestamo(request, libro_id):
        return redirect('catalog')
 
 def est_menu(request):
-    return render(request,'menus\menu_estudiante.html')
+    return render(request,'menus\menu_estu\menu_estudiante.html')
 
 def biblio_menu(request):
-    return render(request,'menus\menu_bibliotecario.html')
+    return render(request,'menus\menu_biblio\menu_bibliotecario.html')
 
 def admin_menu(request):
-    return render(request,'menus\menu_adminidtrador.html')
+    return render(request,'menus\menu_admin\menu_adminidtrador.html')
 
 def solicitudes_pendientes(request):
-    solicitudes= Solicitud.objects.filter(expirada=False, fecha_inicio_prestamo__isnull=True)
+    solicitudes= Solicitud.objects.filter(expirada=False)
     for s in solicitudes:
         s.check_expiracion()
-        return render(request, 'menus/listasolicitudes.html', {'solicitudes': solicitudes})
+        return render(request, 'menus\menu_biblio\solicitudes_prestamos.html', {'solicitudes': solicitudes})
 
+def aceptar_solicitud(request, solicitud_id):
+    solicitud= Solicitud.objects.get(id=solicitud_id)
+    prestamo= Prestamo.objects.create(
+        estudiante= solicitud.estudiante,
+        libro= solicitud.libro,
+        sede= solicitud.sede,
+        fecha_inicio=timezone.now().date(),
+        fecha_fin=timezone.now().date()+ timedelta(days=35)
+    )
+    solicitud.expirada=True
+    solicitud.save()
+    return redirect('solicitudes_pendientes')
 
+    
+    
+    
 
 def redirect_after_login(request):
     user=request.user
@@ -75,3 +92,32 @@ def redirect_after_login(request):
     elif user.role == 'estudiante':
         return redirect('est_menu')
     else: return redirect('default_menu')
+
+
+def gestion_usuarios(request):
+    usuarios= CustomUser.objects.all()
+    return render(request, 'menus\menu_admin\gestion_usuarios.html', {'usuarios':usuarios})
+
+def prestamos_activos(request):
+    usuario= request.user
+    prestamos= Prestamo.objects.filter(estudiante = usuario)
+    return render(request,'menus\menu_estu\prestamos_estudiante.html', {'prestamos': prestamos} )
+
+
+def reserva_activa(request):
+    usuario= request.user
+    reservas = Solicitud.objects.filter(estudiante= usuario)
+    return render(request, 'menus\menu_estu\mis_reservas.html', {'reservas': reservas})
+
+def gestion_prestamos(request):
+    prestamos= Prestamo.objects.filter(activo=True)
+    return render(request, 'menus\menu_biblio\gestion_prestamos.html', {'prestamos': prestamos})
+
+def gestion_libros(request):
+    libros = Libro.objects.all()
+    return render(request, 'menus\menu_admin\gestion_libros.html', {'libros':libros})
+
+def reportes_view(request):
+    return render(request, 'menus/menu_admin/reportes.html')
+
+    

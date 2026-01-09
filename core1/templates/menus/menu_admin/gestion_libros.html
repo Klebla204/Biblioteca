@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {%load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Libros - Administrador</title>
-    <link rel="stylesheet" href="menus.css">
+    <link rel="stylesheet" href="{% static 'css/menus.css' %}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -22,25 +23,25 @@
             <nav class="sidebar-nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="menu_admin.html">
+                         <a href={% url 'admin_menu'%}>
                             <i class="fas fa-home nav-icon"></i>
                             <span class="nav-text">Inicio</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="gestion_usuarios.html">
+                        <a href={% url 'gestion_usuarios'%}>
                             <i class="fas fa-users nav-icon"></i>
                             <span class="nav-text">Usuarios</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a href="gestion_libros.html">
+                        <a href={% url 'gestion_libros'%}>
                             <i class="fas fa-book nav-icon"></i>
                             <span class="nav-text">Libros</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="reportes.html">
+                        <a href={% url 'reportes_view'%}>
                             <i class="fas fa-chart-bar nav-icon"></i>
                             <span class="nav-text">Consultas y Reportes</span>
                         </a>
@@ -49,9 +50,9 @@
             </nav>
             
             <div class="sidebar-footer">
-                <button class="btn-logout" onclick="window.location.href='login.html'">
+                <button class="btn-logout" ><a href = {% url 'logout_view' %}>Cerrar sesion</a>
                     <i class="fas fa-sign-out-alt"></i>
-                    <span>Cerrar sesión</span>
+                    
                 </button>
             </div>
         </aside>
@@ -93,12 +94,13 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% for libro in libros %}
                         <tr>
-                            <td><strong>Cien años de soledad</strong></td>
-                            <td>Gabriel García Márquez</td>
-                            <td>Novela</td>
-                            <td>4</td>
-                            <td>2</td>
+                            <td><strong>{{libro.titulo}}</strong></td>
+                            <td>{{libro.autor}}</td>
+                            <td>{{libro.categoria}}</td>
+                            <td>{{libro.cant_total}}</td>
+                            <td>{{libro.cant_disponible}}</td>
                             <td>
                                 <div class="d-flex gap-10">
                                     <a href="detalles_libro.html" class="btn btn-sm btn-primary" title="Ver detalles">
@@ -113,66 +115,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td><strong>1984</strong></td>
-                            <td>George Orwell</td>
-                            <td>Ciencia ficción</td>
-                            <td>3</td>
-                            <td>1</td>
-                            <td>
-                                <div class="d-flex gap-10">
-                                    <a href="detalles_libro.html" class="btn btn-sm btn-primary" title="Ver detalles">
-                                        <i class="fas fa-eye"></i> Ver
-                                    </a>
-                                    <a href="editar_libro.html" class="btn btn-sm btn-primary" title="Editar libro">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                    <a href="eliminar_libro.html" class="btn btn-sm btn-danger" title="Eliminar libro">
-                                        <i class="fas fa-trash"></i> Eliminar
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>El Gran Gatsby</strong></td>
-                            <td>F. Scott Fitzgerald</td>
-                            <td>Novela</td>
-                            <td>6</td>
-                            <td>4</td>
-                            <td>
-                                <div class="d-flex gap-10">
-                                    <a href="detalles_libro.html" class="btn btn-sm btn-primary" title="Ver detalles">
-                                        <i class="fas fa-eye"></i> Ver
-                                    </a>
-                                    <a href="editar_libro.html" class="btn btn-sm btn-primary" title="Editar libro">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                    <a href="eliminar_libro.html" class="btn btn-sm btn-danger" title="Eliminar libro">
-                                        <i class="fas fa-trash"></i> Eliminar
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><strong>Don Quijote de la Mancha</strong></td>
-                            <td>Miguel de Cervantes</td>
-                            <td>Clásico</td>
-                            <td>5</td>
-                            <td>3</td>
-                            <td>
-                                <div class="d-flex gap-10">
-                                    <a href="detalles_libro.html" class="btn btn-sm btn-primary" title="Ver detalles">
-                                        <i class="fas fa-eye"></i> Ver
-                                    </a>
-                                    <a href="editar_libro.html" class="btn btn-sm btn-primary" title="Editar libro">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                    <a href="eliminar_libro.html" class="btn btn-sm btn-danger" title="Eliminar libro">
-                                        <i class="fas fa-trash"></i> Eliminar
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                       {% endfor %}
                     </tbody>
                 </table>
             </div>

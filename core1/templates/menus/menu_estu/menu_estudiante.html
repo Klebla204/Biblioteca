@@ -24,56 +24,39 @@
             <nav class="sidebar-nav">
                 <ul class="nav-list">
                     <li class="nav-item active">
-                        <a href="#">
+                        <a href= "{% url 'est_menu'%}">
                             <span class="nav-icon"><i class="fas fa-home"></i></span>
-                            <span class="nav-text">Dashboard</span>
+                            <span class="nav-text">Inicio</span>
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a href="#">
+                        <a href= "{% url 'catalog'%}">
                             <span class="nav-icon"><i class="fas fa-book"></i></span>
                             <span class="nav-text">Catálogo Digital</span>
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a href="#">
+                        <a href= "{% url 'prestamos_activos'%}">
                             <span class="nav-icon"><i class="fas fa-book-reader"></i></span>
-                            <span class="nav-text">Mis Préstamos</span>
+                            <span class="nav-text">Prestamos Activos</span>
                             <span class="badge">3</span>
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a href="#">
+                        <a href= "{% url 'reserva_activa'%}">
                             <span class="nav-icon"><i class="fas fa-calendar-check"></i></span>
                             <span class="nav-text">Mis Reservas</span>
                             <span class="badge">1</span>
                         </a>
                     </li>
                     
-                    <li class="nav-item">
-                        <a href="#">
-                            <span class="nav-icon"><i class="fas fa-history"></i></span>
-                            <span class="nav-text">Historial</span>
-                        </a>
-                    </li>
+                   
                     
-                    <li class="nav-item">
-                        <a href="#">
-                            <span class="nav-icon"><i class="fas fa-bell"></i></span>
-                            <span class="nav-text">Notificaciones</span>
-                            <span class="badge badge-alert">5</span>
-                        </a>
-                    </li>
                     
-                    <li class="nav-item">
-                        <a href="#">
-                            <span class="nav-icon"><i class="fas fa-user"></i></span>
-                            <span class="nav-text">Mi Perfil</span>
-                        </a>
-                    </li>
+                    
                 </ul>
             </nav>
             
@@ -83,9 +66,9 @@
                     <span>Sede: Holguín</span>
                 </div>
                 
-                <button class="btn-logout">
+                <button class="btn-logout"><a href = {% url 'logout_view' %}>Cerrar sesion</a>
                     <span class="logout-icon"><i class="fas fa-sign-out-alt"></i></span>
-                    <span>Cerrar Sesión</span>
+                    
                 </button>
             </div>
         </aside>

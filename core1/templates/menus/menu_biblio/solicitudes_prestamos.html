@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+     {%load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes de Préstamo - Bibliotecario</title>
+    <link rel="stylesheet" href="{% static 'css/menus.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- SIDEBAR DE BIBLIOTECARIO -->
+        <aside class="sidebar admin-sidebar">
+            <div class="sidebar-header">
+                <div class="user-avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <h3 class="user-name">Bibliotecario</h3>
+                <p class="user-role">Sistema Bibliotecario</p>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href={% url 'biblio_menu'%}>
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text">Inicio</span>
+                        </a>
+                    </li>
+                
+                    </li>
+                    <li class="nav-item">
+                       <a href={% url 'gestion_prestamos'%}>
+                            <i class="fas fa-exchange-alt nav-icon"></i>
+                            <span class="nav-text">Préstamos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href={% url 'solicitudes_pendientes'%}>
+                            <i class="fas fa-clipboard-list nav-icon"></i>
+                            <span class="nav-text">Solicitudes</span>
+                            <span class="badge badge-alert">3</span>
+                        </a>
+                    </li>
+                   
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button class="btn-logout" ><a href = {% url 'logout_view' %}>Cerrar sesion</a>
+                    <i class="fas fa-sign-out-alt"></i>
+                    
+                </button>
+            </div>
+        </aside>
+        
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            <header class="main-header">
+                <h1 class="page-title">
+                    <i class="fas fa-clipboard-list"></i>
+                    Solicitudes de Préstamo
+                </h1>
+                <div class="header-actions">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-sync-alt"></i> Actualizar
+                    </button>
+                    
+                </div>
+            </header>
+            
+            <!-- FILTROS DE BÚSQUEDA -->
+            <div class="content-card">
+                <h2><i class="fas fa-filter"></i> Filtros de Búsqueda</h2>
+                <div class="filtros-grid">
+                    <div class="form-group">
+                        <label for="busqueda"><i class="fas fa-search"></i> Buscar por:</label>
+                        <input type="text" class="form-control" id="busqueda" placeholder="Nombre del estudiante, título del libro o código">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filtroEstado"><i class="fas fa-tag"></i> Estado:</label>
+                        <select class="form-control" id="filtroEstado">
+                            <option value="todos">Todos los estados</option>
+                            <option value="pendiente">Pendiente</option>
+                            <option value="expirada">Expirada</option>
+                            <option value="aprobada">Aprobada</option>
+                            <option value="rechazada">Rechazada</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filtroFecha"><i class="fas fa-calendar"></i> Fecha de solicitud:</label>
+                        <select class="form-control" id="filtroFecha">
+                            <option value="todas">Todas las fechas</option>
+                            <option value="hoy">Hoy</option>
+                            <option value="semana">Esta semana</option>
+                            <option value="mes">Este mes</option>
+                            <option value="expiradas">Próximas a expirar</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filtroSede"><i class="fas fa-university"></i> Sede:</label>
+                        <select class="form-control" id="filtroSede">
+                            <option value="todas">Todas las sedes</option>
+                            <option value="central">Sede Central</option>
+                            <option value="norte">Campus Norte</option>
+                            <option value="sur">Campus Sur</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="d-flex justify-between align-center mt-2">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-search"></i> Buscar Solicitudes
+                    </button>
+                    <button class="btn btn-secondary">
+                        <i class="fas fa-broom"></i> Limpiar Filtros
+                    </button>
+                </div>
+            </div>
+            
+            <!-- RESUMEN DE SOLICITUDES -->
+            <div class="content-card">
+                <h2><i class="fas fa-chart-pie"></i> Resumen de Solicitudes</h2>
+                <div class="resumen-grid">
+                    <div class="resumen-card">
+                        <h3>Pendientes</h3>
+                        <div class="resumen-numero">5</div>
+                        <div class="resumen-tendencia tendencia-positiva">+2 vs ayer</div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Expiradas</h3>
+                        <div class="resumen-numero">3</div>
+                        <div class="resumen-tendencia tendencia-negativa">Requieren atención</div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Aprobadas Hoy</h3>
+                        <div class="resumen-numero">12</div>
+                        <div class="resumen-tendencia tendencia-positiva">+4 vs ayer</div>
+                    </div>
+                    
+                    <div class="resumen-card">
+                        <h3>Tiempo Promedio</h3>
+                        <div class="resumen-numero">2.3 días</div>
+                        <div class="resumen-tendencia">En espera</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TABLA DE SOLICITUDES -->
+            <div class="content-card">
+                <div class="d-flex justify-between align-center mb-2">
+                    <h2><i class="fas fa-list"></i> Lista de Solicitudes</h2>
+                    <span class="badge badge-primary">8 solicitudes encontradas</span>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>ID Solicitud</th>
+                            <th>Libro</th>
+                            <th>Estudiante</th>
+                            <th>Fecha Solicitud</th>
+                            <th>Fecha Expiración</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                      {% for solicitud in solicitudes %}
+                      
+                        <tr>
+                            <td>SOL-2024-001</td>
+                            <td><strong>{{solicitud.libro}}</strong><br><small>{{solicitud.libro.autor}}</small></td>
+                            <td><strong>{{solicitud.estudiante}}</strong><br><small>{{solicitud.estudiante.email}}</small></td>
+                            <td>{{solicitud.fecha_inicio}}</td>
+                            <td>{{solicitud.fecha_expiracion}}</td>
+                            <td><span class="badge badge-warning">Pendiente</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-success">
+                                    <i class="fas fa-check"> </i> <a href= "{% url 'aceptar_solicitud' solicitud.id %}">Aceptar</a>
+                                </button>
+                        
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+                <!-- PAGINACIÓN -->
+                <div class="d-flex justify-between align-center mt-3">
+                    <div class="d-flex align-center gap-10">
+                        <span>Mostrando <strong>1-5</strong> de <strong>8</strong> solicitudes</span>
+                    </div>
+                    <div class="d-flex gap-10">
+                        <button class="btn btn-sm btn-secondary">
+                            <i class="fas fa-chevron-left"></i> Anterior
+                        </button>
+                        <span class="d-flex align-center">Página <strong>1</strong> de <strong>2</strong></span>
+                        <button class="btn btn-sm btn-secondary">
+                            Siguiente <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- INFORMACIÓN DE ESTADOS -->
+            <div class="content-card">
+                <h2><i class="fas fa-info-circle"></i> Información de Estados</h2>
+                <div class="alerta-item alerta-info">
+                    <div class="alerta-icono">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="alerta-contenido">
+                        <h3>Guía de estados de solicitud</h3>
+                        <div class="d-flex flex-column gap-10">
+                            <div>
+                                <strong><span class="badge badge-warning" style="margin-right: 10px;">Pendiente</span></strong>
+                                <span>Solicitud activa esperando aprobación. Disponible para Aceptar/Rechazar.</span>
+                            </div>
+                            <div>
+                                <strong><span class="badge badge-danger" style="margin-right: 10px;">Expirada</span></strong>
+                                <span>La solicitud superó el plazo de 7 días sin ser procesada. Se puede renovar o eliminar.</span>
+                            </div>
+                            <div>
+                                <strong><span class="badge badge-success" style="margin-right: 10px;">Aprobada</span></strong>
+                                <span>Solicitud convertida en préstamo activo. El estudiante debe retirar el libro.</span>
+                            </div>
+                            <div>
+                                <strong><span class="badge badge-danger" style="margin-right: 10px;">Rechazada</span></strong>
+                                <span>Solicitud rechazada por el bibliotecario. Se requiere motivo.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ACCIONES MASIVAS -->
+            <div class="content-card">
+                <h2><i class="fas fa-bolt"></i> Acciones Masivas</h2>
+                <div class="d-flex gap-10 flex-wrap">
+                    <button class="btn btn-success">
+                        <i class="fas fa-check-double"></i> Aprobar Todas las Disponibles
+                    </button>
+                    <button class="btn btn-danger">
+                        <i class="fas fa-times-circle"></i> Rechazar Todas las Expiradas
+                    </button>
+                    <button class="btn btn-warning">
+                        <i class="fas fa-redo-alt"></i> Renovar Expiradas
+                    </button>
+                    <button class="btn btn-info">
+                        <i class="fas fa-download"></i> Exportar a Excel
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

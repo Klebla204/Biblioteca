@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    {%load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestión de Usuarios - Administrador</title>
-    <link rel="stylesheet" href="menus.css">
+    <link rel="stylesheet" href="{% static 'css/menus.css' %}">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -22,25 +23,25 @@
             <nav class="sidebar-nav">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href="menu_admin.html">
+                        <a href={% url 'admin_menu'%}>
                             <i class="fas fa-home nav-icon"></i>
                             <span class="nav-text">Inicio</span>
                         </a>
                     </li>
                     <li class="nav-item active">
-                        <a href="gestion_usuarios.html">
+                        <a href={% url 'gestion_usuarios'%}>
                             <i class="fas fa-users nav-icon"></i>
                             <span class="nav-text">Usuarios</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="gestion_libros.html">
+                        <a href={% url 'gestion_libros'%}>
                             <i class="fas fa-book nav-icon"></i>
                             <span class="nav-text">Libros</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="reportes.html">
+                        <a href={% url 'reportes_view'%}>
                             <i class="fas fa-chart-bar nav-icon"></i>
                             <span class="nav-text">Consultas y Reportes</span>
                         </a>
@@ -49,9 +50,9 @@
             </nav>
             
             <div class="sidebar-footer">
-                <button class="btn-logout" onclick="window.location.href='login.html'">
+                <button class="btn-logout"><a href = {% url 'logout_view' %}>Cerrar sesion</a>
                     <i class="fas fa-sign-out-alt"></i>
-                    <span>Cerrar sesión</span>
+                    
                 </button>
             </div>
         </aside>
@@ -91,13 +92,15 @@
                             <th>Acciones</th>
                         </tr>
                     </thead>
+                    
                     <tbody>
+                        {% for usuario in usuarios %}
                         <tr>
                             <td>
-                                <strong>Juan Pérez</strong>
+                                <strong>{{usuario.get_full_name| default:usuario.username}}</strong>
                             </td>
-                            <td>juan.perez@example.com</td>
-                            <td><span class="badge badge-primary">Usuario</span></td>
+                            <td>{{usuario.email}}</td>
+                            <td><span class="badge badge-primary">{{usuario.role}}</span></td>
                             <td><span class="badge badge-success">Activo</span></td>
                             <td>
                                 <div class="d-flex gap-10">
@@ -113,69 +116,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr>
-                            <td>
-                                <strong>María García</strong>
-                            </td>
-                            <td>maria.garcia@example.com</td>
-                            <td><span class="badge badge-primary">Bibliotecario</span></td>
-                            <td><span class="badge badge-success">Activo</span></td>
-                            <td>
-                                <div class="d-flex gap-10">
-                                    <a href="detalles_usuario.html" class="btn btn-sm btn-primary" title="Ver detalles del usuario">
-                                        <i class="fas fa-eye"></i> Ver
-                                    </a>
-                                    <a href="editar_usuario.html" class="btn btn-sm btn-primary" title="Editar usuario">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                    <a href="eliminar_usuario.html" class="btn btn-sm btn-danger" title="Eliminar usuario">
-                                        <i class="fas fa-trash"></i> Eliminar
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>Carlos Rodríguez</strong>
-                            </td>
-                            <td>carlos.rodriguez@example.com</td>
-                            <td><span class="badge badge-primary">Estudiante</span></td>
-                            <td><span class="badge badge-warning">Inactivo</span></td>
-                            <td>
-                                <div class="d-flex gap-10">
-                                    <a href="detalles_usuario.html" class="btn btn-sm btn-primary" title="Ver detalles del usuario">
-                                        <i class="fas fa-eye"></i> Ver
-                                    </a>
-                                    <a href="editar_usuario.html" class="btn btn-sm btn-primary" title="Editar usuario">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                    <a href="eliminar_usuario.html" class="btn btn-sm btn-danger" title="Eliminar usuario">
-                                        <i class="fas fa-trash"></i> Eliminar
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <strong>Ana López</strong>
-                            </td>
-                            <td>ana.lopez@example.com</td>
-                            <td><span class="badge badge-primary">Administrador</span></td>
-                            <td><span class="badge badge-success">Activo</span></td>
-                            <td>
-                                <div class="d-flex gap-10">
-                                    <a href="detalles_usuario.html" class="btn btn-sm btn-primary" title="Ver detalles del usuario">
-                                        <i class="fas fa-eye"></i> Ver
-                                    </a>
-                                    <a href="editar_usuario.html" class="btn btn-sm btn-primary" title="Editar usuario">
-                                        <i class="fas fa-edit"></i> Editar
-                                    </a>
-                                    <a href="eliminar_usuario.html" class="btn btn-sm btn-danger" title="Eliminar usuario">
-                                        <i class="fas fa-trash"></i> Eliminar
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
+                      {%endfor%}
                     </tbody>
                 </table>
             </div>
