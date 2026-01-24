@@ -30,10 +30,13 @@
     <div class="hero-content">
         <div class="hero-text">
             <h1 class="hero-title">Sistema de Gestión de Préstamos Bibliotecarios</h1>
+            
+
             <p class="hero-description">
                 Gestiona tu biblioteca de manera eficiente con nuestro sistema integral
                 de préstamos, catálogo digital y administración de recursos académicos.
             </p>
+            
             <div class="hero-buttons">
                 <a href="{% url 'login' %}" class="btn btn-primary">Acceder al Sistema</a>
                 <a href="#servicios" class="btn btn-secondary">Conocer Servicios</a>
@@ -97,20 +100,23 @@
     </div>
 </section>
 
+<!-- Modificaciones nuevas-->
 <!-- ESTADÍSTICAS SECTION -->
+ 
+
 <section class="stats-section">
     <div class="container">
         <div class="stats-grid">
             <div class="stat-item">
-                <span class="stat-number">5,000+</span>
+                <span class="stat-number">{{ total_libros }}</span>
                 <span class="stat-label">Libros en Catálogo</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">2,500+</span>
+                <span class="stat-number">{{ total_usuarios }}</span>
                 <span class="stat-label">Usuarios Activos</span>
             </div>
             <div class="stat-item">
-                <span class="stat-number">15,000+</span>
+                <span class="stat-number">{{ total_prestamos }}</span>
                 <span class="stat-label">Préstamos Anuales</span>
             </div>
             <div class="stat-item">
@@ -233,7 +239,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Sistema de Gestión de Préstamos Bibliotecarios - UHO. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Sistema de Gestión de Préstamos Bibliotecarios - UHO. Todos los derechos reservados.</p>
         </div>
     </footer>
 </body>

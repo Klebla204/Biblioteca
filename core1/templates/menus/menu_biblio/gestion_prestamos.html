@@ -16,7 +16,7 @@
                 <div class="user-avatar">
                     <i class="fas fa-user-tie"></i>
                 </div>
-                <h3 class="user-name">Bibliotecario</h3>
+                <h3 class="user-name">{{user.username}}</h3>
                 <p class="user-role">Sistema Bibliotecario</p>
             </div>
             
@@ -33,7 +33,7 @@
                         <a href={% url 'gestion_prestamos'%}>
                             <i class="fas fa-exchange-alt nav-icon"></i>
                             <span class="nav-text">Préstamos</span>
-                            <span class="badge badge-warning">5</span>
+                            
                         </a>
                     </li>
                     <li class="nav-item">
@@ -70,64 +70,7 @@
             
             <!-- PESTAÑAS DE GESTIÓN -->
             <div class="content-card">
-                <div class="tabs-container">
-                    <div class="tabs-header">
-                        <button class="tab-btn active" data-tab="listado">
-                            <i class="fas fa-list"></i> Listado de Préstamos
-                        </button>
-                        <button class="tab-btn" data-tab="nuevo">
-                            <i class="fas fa-plus-circle"></i> Nuevo Préstamo
-                        </button>
-                        <button class="tab-btn" data-tab="devolucion">
-                            <i class="fas fa-check-circle"></i> Registrar Devolución
-                        </button>
-                        <button class="tab-btn" data-tab="renovacion">
-                            <i class="fas fa-redo"></i> Renovaciones
-                        </button>
-                    </div>
-                    
-                    <!-- CONTENIDO DE PESTAÑA: LISTADO -->
-                    <div class="tab-content active" id="tab-listado">
-                        <!-- FILTROS DE BÚSQUEDA -->
-                        <div class="content-card">
-                            <h3><i class="fas fa-filter"></i> Filtros de Búsqueda</h3>
-                            <div class="filtros-grid">
-                                <div class="form-group">
-                                    <label for="buscarPrestamo"><i class="fas fa-search"></i> Buscar:</label>
-                                    <input type="text" class="form-control" id="buscarPrestamo" placeholder="Estudiante, libro, ID préstamo...">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="estadoPrestamo"><i class="fas fa-tag"></i> Estado:</label>
-                                    <select class="form-control" id="estadoPrestamo">
-                                        <option value="todos">Todos</option>
-                                        <option value="activo">Activo</option>
-                                        <option value="atrasado">Atrasado</option>
-                                        <option value="devuelto">Devuelto</option>
-                                        <option value="renovado">Renovado</option>
-                                    </select>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="fechaDesde"><i class="fas fa-calendar"></i> Desde:</label>
-                                    <input type="date" class="form-control" id="fechaDesde">
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="fechaHasta"><i class="fas fa-calendar"></i> Hasta:</label>
-                                    <input type="date" class="form-control" id="fechaHasta">
-                                </div>
-                            </div>
-                            
-                            <div class="d-flex justify-between align-center mt-2">
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-search"></i> Buscar Préstamos
-                                </button>
-                                <button class="btn btn-info">
-                                    <i class="fas fa-download"></i> Exportar a Excel
-                                </button>
-                            </div>
-                        </div>
+                
                         
                         <!-- TABLA DE PRÉSTAMOS -->
                         <div class="content-card">
@@ -176,13 +119,13 @@
                             <!-- PAGINACIÓN -->
                             <div class="d-flex justify-between align-center mt-3">
                                 <div class="d-flex align-center gap-10">
-                                    <span>Mostrando <strong>1-5</strong> de <strong>42</strong> préstamos</span>
+                                    
                                 </div>
                                 <div class="d-flex gap-10">
                                     <button class="btn btn-sm btn-secondary">
                                         <i class="fas fa-chevron-left"></i> Anterior
                                     </button>
-                                    <span class="d-flex align-center">Página <strong>1</strong> de <strong>9</strong></span>
+                                    
                                     <button class="btn btn-sm btn-secondary">
                                         Siguiente <i class="fas fa-chevron-right"></i>
                                     </button>
@@ -190,55 +133,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- CONTENIDO DE PESTAÑA: NUEVO PRÉSTAMO -->
-                    <div class="tab-content" id="tab-nuevo">
-                        <div class="content-card">
-                            <h3><i class="fas fa-plus-circle"></i> Nuevo Préstamo</h3>
-                            <div class="filtros-grid">
-                                <div class="form-group">
-                                    <label for="buscarUsuario"><i class="fas fa-user-graduate"></i> Buscar Estudiante:</label>
-                                    <div class="d-flex gap-10">
-                                        <input type="text" class="form-control" id="buscarUsuario" placeholder="Carné, nombre o email...">
-                                        <button class="btn btn-primary">
-                                            <i class="fas fa-search"></i> Buscar
-                                        </button>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label for="buscarLibroPrestamo"><i class="fas fa-book"></i> Buscar Libro:</label>
-                                    <div class="d-flex gap-10">
-                                        <input type="text" class="form-control" id="buscarLibroPrestamo" placeholder="Título, autor o ISBN...">
-                                        <button class="btn btn-primary">
-                                            <i class="fas fa-search"></i> Buscar
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- INFORMACIÓN DEL USUARIO -->
-                            <div class="user-info-card mt-2">
-                                <div class="user-avatar-small">
-                                    <i class="fas fa-user-graduate"></i>
-                                </div>
-                                <div class="user-details">
-                                    <h3>Ana López</h3>
-                                    <p><strong>Carné:</strong> 2021001</p>
-                                    <p><strong>Email:</strong> ana.lopez@institucion.edu</p>
-                                    <p><strong>Facultad:</strong> Ingeniería</p>
-                                    <p><strong>Estado:</strong> <span class="badge badge-success">Activo</span></p>
-                                    <p><strong>Préstamos activos:</strong> 2 de 5 permitidos</p>
-                                </div>
-                            </div>
-                            
-                            <!-- LIBROS SELECCIONADOS -->
-                            <div class="content-card mt-2">
-                                <h4><i class="fas fa-shopping-cart"></i> Libros a Prestar</h4>
-                                <table class="data-table">
-                                    <thead>
-                                        <tr>
-                                            <th>Libro</th>
-                                            <th>Autor</th>
-                                            <th>Disponibilidad</th>
-                                            <th
+                </div>    
+            </div>   
+    
+         </main>
+       
+    </body>
+</html>

@@ -16,7 +16,7 @@
                 <div class="user-avatar">
                     <i class="fas fa-user-shield"></i>
                 </div>
-                <h3 class="user-name">Administrador</h3>
+                <h3 class="user-name">{{user.username}}</h3>
                 <p class="user-role">Sistema Bibliotecario</p>
             </div>
             
@@ -109,55 +109,7 @@
                 </div>
             </div>
             
-            <!-- ACTIVIDAD RECIENTE -->
-            <div class="content-card">
-                <h2><i class="fas fa-history"></i> Actividad Reciente</h2>
-                <div class="actividad-lista">
-                    <div class="actividad-item">
-                        <div class="actividad-icono">
-                            <i class="fas fa-book-reader"></i>
-                        </div>
-                        <div class="actividad-contenido">
-                            <h3>Nuevo Préstamo Registrado</h3>
-                            <p>Carlos Rodríguez solicitó "Cien años de soledad"</p>
-                            <span class="actividad-fecha">Hace 15 minutos</span>
-                        </div>
-                    </div>
-                    
-                    <div class="actividad-item">
-                        <div class="actividad-icono">
-                            <i class="fas fa-user-plus"></i>
-                        </div>
-                        <div class="actividad-contenido">
-                            <h3>Nuevo Usuario Registrado</h3>
-                            <p>Laura Méndez se registró en el sistema</p>
-                            <span class="actividad-fecha">Hace 2 horas</span>
-                        </div>
-                    </div>
-                    
-                    <div class="actividad-item">
-                        <div class="actividad-icono">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="actividad-contenido">
-                            <h3>Libro Agregado al Catálogo</h3>
-                            <p>"Machine Learning Avanzado" fue agregado por el bibliotecario</p>
-                            <span class="actividad-fecha">Hace 5 horas</span>
-                        </div>
-                    </div>
-                    
-                    <div class="actividad-item">
-                        <div class="actividad-icono">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div class="actividad-contenido">
-                            <h3>Devolución Exitosa</h3>
-                            <p>Juan Pérez devolvió "Base de Datos Avanzadas"</p>
-                            <span class="actividad-fecha">Hoy, 9:30 AM</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        
             
             <!-- PRÉSTAMOS PRÓXIMOS A VENCER -->
             <div class="content-card">
@@ -210,97 +162,7 @@
                 </table>
             </div>
             
-            <!-- ESTADO DEL SISTEMA -->
-            <div class="content-card">
-                <h2><i class="fas fa-server"></i> Estado del Sistema</h2>
-                <div class="sistema-grid">
-                    <div class="sistema-item sistema-activo">
-                        <div class="sistema-icono">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <div class="sistema-info">
-                            <h3>Base de Datos</h3>
-                            <p>Operativa - 98% disponibilidad</p>
-                        </div>
-                    </div>
-                    
-                    <div class="sistema-item sistema-activo">
-                        <div class="sistema-icono">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div class="sistema-info">
-                            <h3>Servidor Web</h3>
-                            <p>Operativo - Respuesta: 120ms</p>
-                        </div>
-                    </div>
-                    
-                    <div class="sistema-item sistema-advertencia">
-                        <div class="sistema-icono">
-                            <i class="fas fa-hdd"></i>
-                        </div>
-                        <div class="sistema-info">
-                            <h3>Almacenamiento</h3>
-                            <p>85% utilizado - 15GB disponibles</p>
-                        </div>
-                    </div>
-                    
-                    <div class="sistema-item sistema-activo">
-                        <div class="sistema-icono">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <div class="sistema-info">
-                            <h3>Seguridad</h3>
-                            <p>Protegido - Última auditoría: Hoy</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- ACCIONES RÁPIDAS -->
-            <div class="content-card">
-                <h2><i class="fas fa-bolt"></i> Acciones Rápidas</h2>
-                <div class="acciones-grid">
-                    <a href="crear_usuario.html" class="accion-item">
-                        <div class="accion-icono">
-                            <i class="fas fa-user-plus"></i>
-                        </div>
-                        <div class="accion-contenido">
-                            <h3>Crear Usuario</h3>
-                            <p>Agregar nuevo usuario al sistema</p>
-                        </div>
-                    </a>
-                    
-                    <a href="crear_libro.html" class="accion-item">
-                        <div class="accion-icono">
-                            <i class="fas fa-book-medical"></i>
-                        </div>
-                        <div class="accion-contenido">
-                            <h3>Agregar Libro</h3>
-                            <p>Agregar nuevo libro al catálogo</p>
-                        </div>
-                    </a>
-                    
-                    <a href="reportes.html" class="accion-item">
-                        <div class="accion-icono">
-                            <i class="fas fa-file-export"></i>
-                        </div>
-                        <div class="accion-contenido">
-                            <h3>Generar Reporte</h3>
-                            <p>Exportar reportes del sistema</p>
-                        </div>
-                    </a>
-                    
-                    <button class="accion-item" onclick="realizarBackup()">
-                        <div class="accion-icono">
-                            <i class="fas fa-save"></i>
-                        </div>
-                        <div class="accion-contenido">
-                            <h3>Backup del Sistema</h3>
-                            <p>Crear copia de seguridad</p>
-                        </div>
-                    </button>
-                </div>
-            </div>
+           
         </main>
     </div>
 

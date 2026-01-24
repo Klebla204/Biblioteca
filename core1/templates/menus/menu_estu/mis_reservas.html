@@ -46,7 +46,7 @@
                             <a href= "{% url 'prestamos_activos'%}">
                                 <span class="nav-icon"><i class="fas fa-book-reader"></i></span>
                                 <span class="nav-text">Préstamos Activos</span>
-                                <span class="badge badge-warning">2</span>
+                                
                             </a>
                         </li>
                         
@@ -54,7 +54,7 @@
                             <a href= "{% url 'reserva_activa' %}">
                                 <span class="nav-icon"><i class="fas fa-bookmark"></i></span>
                                 <span class="nav-text">Mis Reservas</span>
-                                <span class="badge badge-primary">1</span>
+                                
                             </a>
                         </li>
                     </ul>
@@ -78,49 +78,12 @@
         
         <!-- CONTENIDO PRINCIPAL -->
         <main class="main-content">
-            <header class="main-header">
-                <h1 class="page-title">
-                    <i class="fas fa-bookmark"></i>
-                    Mis Reservas
-                </h1>
-                <div class="header-actions">
-                    <a href="buscar_libros_estudiante.html" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Nueva Reserva
-                    </a>
-                </div>
-            </header>
             
             <!-- CONTENIDO PRINCIPAL -->
             <div class="content-card fade-in">
                 <h2><i class="fas fa-bookmark icon-primary"></i> Mis Reservas</h2>
                 
-                <!-- Pestañas para diferentes estados de reservas -->
-                <div class="tabs-container mt-2">
-                    <div class="tabs-header">
-                        <button class="tab-btn active" onclick="switchTab('activas')">
-                            <i class="fas fa-clock"></i> Activas (2)
-                        </button>
-                        <button class="tab-btn" onclick="switchTab('disponibles')">
-                            <i class="fas fa-check-circle"></i> Disponibles para retiro
-                        </button>
-                        <button class="tab-btn" onclick="switchTab('historial-reservas')">
-                            <i class="fas fa-history"></i> Historial
-                        </button>
-                    </div>
-                    
-                    <!-- Contenido de pestaña reservas activas -->
-                    <div class="tab-content active" id="activas">
-                        <div class="alertas-container mt-2">
-                            <div class="alerta-item alerta-info">
-                                <div class="alerta-icono">
-                                    <i class="fas fa-info-circle"></i>
-                                </div>
-                                <div class="alerta-contenido">
-                                    <h3>Tienes 2 reservas activas</h3>
-                                    
-                                </div>
-                            </div>
-                        </div>
+                
                         
                         <div class="user-details-grid mt-2">
                             
@@ -145,118 +108,13 @@
                         </div>
                     </div>
                     
-                    <!-- Contenido de pestaña reservas disponibles para retiro -->
-                    <div class="tab-content" id="disponibles">
-                        <div class="alertas-container mt-2">
-                            <div class="alerta-item alerta-info">
-                                <div class="alerta-icono">
-                                    <i class="fas fa-bell"></i>
-                                </div>
-                                <div class="alerta-contenido">
-                                    <h3>No tienes reservas disponibles para retiro en este momento</h3>
-                                    <p>Revisa tus reservas activas para conocer las fechas estimadas de disponibilidad.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Mensaje cuando no hay reservas disponibles -->
-                        <div class="text-center mt-3 mb-3">
-                            <i class="fas fa-inbox icon-info" style="font-size: 48px; margin-bottom: 15px;"></i>
-                            <h3>Sin reservas disponibles</h3>
-                            <p class="mb-3">Cuando tengas una reserva lista para retirar, aparecerá aquí.</p>
-                            <a href="buscar_libros_estudiante.html" class="btn btn-primary">
-                                <i class="fas fa-search"></i> Buscar más libros
-                            </a>
-                        </div>
-                    </div>
                     
-                    <!-- Contenido de pestaña historial de reservas -->
-                    <div class="tab-content" id="historial-reservas">
-                        <div class="alertas-container mt-2">
-                            <div class="alerta-item alerta-info">
-                                <div class="alerta-icono">
-                                    <i class="fas fa-info-circle"></i>
-                                </div>
-                                <div class="alerta-contenido">
-                                    <h3>Historial de reservas</h3>
-                                    <p>Listado de todas las reservas que has realizado anteriormente.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <table class="data-table mt-2">
-                            <thead>
-                                <tr>
-                                    <th>Título del Libro</th>
-                                    <th>Fecha Reserva</th>
-                                    <th>Fecha Disponible</th>
-                                    <th>Estado Final</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <strong>Programación en Python</strong><br>
-                                        <small>Autor: Mark Lutz</small>
-                                    </td>
-                                    <td>01/04/2024</td>
-                                    <td>10/04/2024</td>
-                                    <td>
-                                        <span class="estado-badge estado-aprobada">Retirado</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn-tabla btn-tabla-detalles">
-                                            <i class="fas fa-info-circle"></i> Ver
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Álgebra Lineal</strong><br>
-                                        <small>Autor: Gilbert Strang</small>
-                                    </td>
-                                    <td>15/03/2024</td>
-                                    <td>25/03/2024</td>
-                                    <td>
-                                        <span class="estado-badge estado-rechazada">Cancelada</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn-tabla btn-tabla-detalles">
-                                            <i class="fas fa-info-circle"></i> Ver
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <strong>Inteligencia Artificial</strong><br>
-                                        <small>Autor: Stuart Russell</small>
-                                    </td>
-                                    <td>01/03/2024</td>
-                                    <td>15/03/2024</td>
-                                    <td>
-                                        <span class="estado-badge estado-aprobada">Retirado</span>
-                                    </td>
-                                    <td>
-                                        <button class="btn-tabla btn-tabla-detalles">
-                                            <i class="fas fa-info-circle"></i> Ver
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    
+                    
+                    
                 </div>
                 
-                <!-- Instrucciones para reservas -->
-                <div class="detail-card mt-3">
-                    <h3><i class="fas fa-question-circle icon-info"></i> Información sobre reservas</h3>
-                    <p><strong>1. Tiempo de espera:</strong> Una vez disponible, tienes 48 horas para retirar el libro.</p>
-                    <p><strong>2. Cancelación:</strong> Puedes cancelar una reserva en cualquier momento.</p>
-                    <p><strong>3. Notificaciones:</strong> Recibirás un correo cuando el libro esté disponible.</p>
-                    <p><strong>4. Límite de reservas:</strong> Máximo 3 reservas simultáneas.</p>
-                    <p><strong>5. Prioridad:</strong> Los libros se asignan por orden de reserva (FIFO).</p>
-                </div>
+                
             </div>
         </main>
     </div>

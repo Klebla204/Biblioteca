@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from datetime import timedelta, date
 from django.utils import timezone
+
 class CustomUser(AbstractUser):
     ROLE_CHOICES =(
         ('Admin', 'Administrador'),
@@ -57,6 +58,7 @@ class Prestamo(models.Model):
     fecha_inicio= models.DateField(default=timezone.now)
     fecha_fin= models.DateField()
     activo= models.BooleanField(default=True)
+    
     def finalizar(self):
         self.activo=False
         self.libro.cant_disponible +=1

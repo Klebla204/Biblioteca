@@ -5,10 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Catálogo de Libros - Biblioteca UHO</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   
+
 </head>
 <body>
+    
+
     <!-- HEADER PÚBLICO -->
     <header class="public-header">
         <nav class="public-nav">
@@ -18,10 +22,9 @@
             <ul class="nav-menu">
                 <li><a href={% url 'index' %}>Inicio</a></li>
                 <li><a href={% url 'catalog' %} class="active">Catálogo</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href={% url 'login'%} class="login-btn">Acceder</a></li>
+                <li>{%if user.is_authenticated %} <a href = {% url 'mi_perfil' %}>Mi perfil</a>
+                    {%else %}<a href = {% url 'login' %}>Mi perfil</a>
+                    {% endif %}
             </ul>
         </nav>
     </header>
@@ -33,91 +36,40 @@
             <div class="container">
                 <h1 class="catalog-title">Catálogo de Libros</h1>
                 <p class="catalog-subtitle">Explora nuestra colección de más de 5,000 libros disponibles</p>
-                
+      
+
+
                 <!-- Barra de Búsqueda -->
-                <div class="search-bar">
-                    <form class="search-form">
+                <div id="search-bar">
+                    <form id="search-form" class="search-form" method="get" action="{% url 'catalog' %}">
                         <div class="search-input-group">
-                            <i class="fas fa-search"></i>
-                            <input type="text" 
-                                   placeholder="Buscar por título, autor, ISBN o palabra clave..." 
-                                   class="search-input">
+                        
+                         <i class="fas fa-search"></i>
+                         <input
+                            type="text"
+                            name="q"
+                            placeholder="Buscar libros"
+                            value="{{ query }}"
+                            autocomplete="off" class="search-input"
+                            >
                         </div>
                         <button type="submit" class="search-btn">Buscar</button>
                     </form>
                 </div>
-            </div>
-        </section>
 
-        <!-- Filtros de Búsqueda -->
-        <section class="filters-section">
-            <div class="container">
-                <div class="filters-wrapper">
-                    <div class="filter-group">
-                        <h4>Filtrar por:</h4>
-                        
-                        <div class="filter-row">
-                            <!-- Categoría -->
-                            <div class="filter-item">
-                                <label for="categoria"><i class="fas fa-tag"></i> Categoría</label>
-                                <select id="categoria" class="filter-select">
-                                    <option value="">Todas las categorías</option>
-                                    <option value="literatura">📚 Literatura</option>
-                                    <option value="ciencias">🔬 Ciencias</option>
-                                    <option value="tecnologia">💻 Tecnología</option>
-                                    <option value="negocios">📈 Negocios</option>
-                                    <option value="arte">🎨 Arte</option>
-                                    <option value="historia">🏛️ Historia</option>
-                                </select>
-                            </div>
-                            
-                            <!-- Sede -->
-                            <div class="filter-item">
-                                <label for="sede"><i class="fas fa-map-marker-alt"></i> Sede</label>
-                                <select id="sede" class="filter-select">
-                                    <option value="">Todas las sedes</option>
-                                    <option value="principal">Campus Principal</option>
-                                    <option value="centro">Centro de Holguín</option>
-                                    <option value="sur">Campus Sur</option>
-                                </select>
-                            </div>
-                            
-                            <!-- Disponibilidad -->
-                            <div class="filter-item">
-                                <label for="disponibilidad"><i class="fas fa-check-circle"></i> Disponibilidad</label>
-                                <select id="disponibilidad" class="filter-select">
-                                    <option value="">Todos</option>
-                                    <option value="disponible">Disponible ahora</option>
-                                    <option value="prestado">En préstamo</option>
-                                    <option value="reservado">Reservado</option>
-                                </select>
-                            </div>
-                            
-                            <!-- Año -->
-                            <div class="filter-item">
-                                <label for="año"><i class="fas fa-calendar"></i> Año de publicación</label>
-                                <select id="año" class="filter-select">
-                                    <option value="">Cualquier año</option>
-                                    <option value="2020-2024">2020 - 2024</option>
-                                    <option value="2010-2019">2010 - 2019</option>
-                                    <option value="2000-2009">2000 - 2009</option>
-                                    <option value="1990-1999">1990 - 1999</option>
-                                </select>
-                            </div>
-                        </div>
-                        
-                        <div class="filter-actions">
-                            <button class="btn btn-primary">
-                                <i class="fas fa-filter"></i> Aplicar Filtros
-                            </button>
-                            <button class="btn btn-secondary">
-                                <i class="fas fa-redo"></i> Limpiar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+        
+
+
+
             </div>
         </section>
+        
+    
+
+       
+
+
+    
 
         <!-- Estadísticas Rápidas -->
         <section class="stats-section">
@@ -127,14 +79,14 @@
                         <div class="stat-icon">
                             <i class="fas fa-book"></i>
                         </div>
-                        <span class="stat-number">5,280</span>
+                        <span class="stat-number">{{ total_libros }}</span>
                         <span class="stat-label">Libros en catálogo</span>
                     </div>
                     <div class="stat-card">
                         <div class="stat-icon">
                             <i class="fas fa-check-circle"></i>
                         </div>
-                        <span class="stat-number">3,450</span>
+                        <span class="stat-number">{{ disponibles_ahora }}</span>
                         <span class="stat-label">Disponibles ahora</span>
                     </div>
                     <div class="stat-card">
@@ -148,7 +100,7 @@
                         <div class="stat-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
-                        <span class="stat-number">3</span>
+                        <span class="stat-number">{{ total_sedes }}</span>
                         <span class="stat-label">Sedes disponibles</span>
                     </div>
                 </div>
@@ -171,29 +123,29 @@
                             <div class="cover-placeholder literature">
                                 <span>C</span>
                             </div>
-                            <span class="book-status available">
+                            <span class="book-status available ">
                                 <i class="fas fa-check"></i> {{libro.cant_disponible}}
                             </span>
                         </div>
                         <div class="book-info">
                             <h3 class="book-title">{{libro.titulo}}</h3>
-                            <p class="book-author">{{libro.autor}}</p>
-                            <p class="book-isbn">ISBN: {{libro.isbn}}</p>
+                            <p class="book-author ">{{libro.autor}}</p>
+                            <p class="book-isbn ">ISBN: {{libro.isbn}}</p>
                             
                             <div class="book-meta">
                                 <span class="meta-tag">
                                     <i class="fas fa-tag"></i> {{libro.categoria}}
                                 </span>
                                 <span class="meta-location">
-                                    <i class="fas fa-map-marker-alt"></i> {{libro.sede.nombre}}
+                                    <i class="fas fa-map-marker-alt"></i> {% if libro.sede %} {{ libro.sede.nombre }} {% else %} Sin sede {% endif %}
                                 </span>
                             </div>
                             
-                            <p class="book-description">
+                            <p class="book-description ">
                                {{libro.descripcion}}
                             </p>
                             
-                            <div class="book-actions">
+                            <div class="book-actions ">
                                 <button class="btn-details">
                                     <i class="fas fa-info-circle"> 
                                         
@@ -225,4 +177,15 @@
                     </a>
                 </div>
                 <p> Usuario autenticado: {{user.is_authenticated}}</p>
+
+            </section>
+
+    
+
+            </body>
+        
+
+
+
+            </html>
      
