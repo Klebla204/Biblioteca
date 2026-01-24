@@ -10,8 +10,6 @@ __pycache__/
 *.so
 *.pyd
 
-# Base de datos SQLite
-db.sqlite3
 
 # Archivos de migraciones generados automáticamente (opcional, si no los versionas)
 */migrations/*.py
