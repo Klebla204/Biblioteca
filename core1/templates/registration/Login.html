@@ -24,6 +24,11 @@
             </div>
             
             <button type="submit" class="login__button">Iniciar sesión</button>
+            {% if form.errors %}
+            <div class="alert alert-danger">
+                Usuario o contraseña incorrectos
+            </div>
+            {% endif %}
         </form>
         
         <div class="login__info">

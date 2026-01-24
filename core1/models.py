@@ -6,7 +6,7 @@ from django.utils import timezone
 
 class CustomUser(AbstractUser):
     ROLE_CHOICES =(
-        ('Admin', 'Administrador'),
+        ('Administrador', 'Administrador'),
         ('Bibliotecario', 'Bibliotecario'),
         ('Estudiante', 'Estudiante'),
     )
