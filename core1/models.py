@@ -52,7 +52,8 @@ class Solicitud(models.Model):
             
             
 class Prestamo(models.Model):
-    estudiante= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="prestamos")
+    estudiante= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,
+                                  related_name="prestamos")
     libro= models.ForeignKey('Libro', on_delete=models.CASCADE, related_name="prestamos")
     sede= models.ForeignKey('Sede', on_delete=models.CASCADE)
     fecha_inicio= models.DateField(default=timezone.now)

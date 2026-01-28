@@ -107,9 +107,8 @@ def admin_menu(request):
 
 def solicitudes_pendientes(request):
     solicitudes= Solicitud.objects.filter(expirada=False)
-    for s in solicitudes:
-        s.check_expiracion()
-        return render(request, 'menus\menu_biblio\solicitudes_prestamos.html', {'solicitudes': solicitudes})
+    
+    return render(request, 'menus\menu_biblio\solicitudes_prestamos.html', {'solicitudes': solicitudes})
 
 def aceptar_solicitud(request, solicitud_id):
     solicitud= Solicitud.objects.get(id=solicitud_id)
@@ -124,8 +123,6 @@ def aceptar_solicitud(request, solicitud_id):
     solicitud.save()
     return redirect('solicitudes_pendientes')
 
-    
-    
     
 
 def redirect_after_login(request):
@@ -232,5 +229,10 @@ def crear_libro(request):
     else:
         form= LibroCreationForm()
     return render(request,'menus/menu_admin/crear_libro.html', {'form': form, 'accion': 'Crear'})
+
+def devolver_libro(request,id):
+    libro= get_object_or_404(Prestamo, id=id)
+    libro.finalizar()
+    return redirect('gestion_prestamos')
 
     

@@ -110,7 +110,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                      {% for solicitud in solicitudes %}
+                      {% if solicitudes %}
+                        {% for solicitud in solicitudes %}
                       
                         <tr>
                             <td>SOL-2024-001</td>
@@ -127,6 +128,9 @@
                             </td>
                         </tr>
                         {% endfor %}
+                        {% else %}
+                        <p> No hay solicitudes pendientes</p>
+                        {% endif %}
                     </tbody>
                 </table>
                 

@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión Bibliotecaria</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
     <!-- Bootstrap CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- Bootstrap Icons -->
@@ -212,7 +213,7 @@
             <h2>¿Listo para Optimizar tu Biblioteca?</h2>
             <p>Únete a nuestra plataforma y descubre una nueva forma de gestionar recursos bibliográficos</p>
             <div class="cta-buttons">
-                <a href="" class="btn btn-primary btn-large">Comenzar Ahora</a>
+                <a href="{% url 'login' %}" class="btn btn-primary btn-large">Comenzar Ahora</a>
                 <a href="#contacto" class="btn btn-secondary btn-large">Más Información</a>
             </div>
         </div>

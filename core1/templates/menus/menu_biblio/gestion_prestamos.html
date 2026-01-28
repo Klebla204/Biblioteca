@@ -102,14 +102,10 @@
                                         <td><span class="badge badge-danger">Activo</span></td>
                                         <td>
                                             <button class="btn btn-sm btn-success">
-                                                <i class="fas fa-check"></i> Devolver
+                                                <i class="fas fa-check"></i> <a href = {% url 'devolver_libro' prestamo.id %}>Devolver</a>
                                             </button>
-                                            <button class="btn btn-sm btn-warning">
-                                                <i class="fas fa-redo"></i> Renovar
-                                            </button>
-                                            <button class="btn btn-sm btn-info">
-                                                <i class="fas fa-eye"></i> Detalles
-                                            </button>
+                                            
+                                
                                         </td>
                                     </tr>
                                    {% endfor %}

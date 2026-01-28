@@ -3,7 +3,7 @@ from django.contrib.auth import  views as auth_views
 from . import views
 from .views import redirect_after_login, prestamos_activos, reserva_activa, gestion_prestamos, editar_libro,editar_usuarios, crear_libro, crear_usuario
 from .views import CustomLoginView, admin_menu, biblio_menu, est_menu, gestion_libros,reportes_view,catalog_view, mi_perfil,eliminar_libro
-from .views import solicitar_prestamo, logout_view, solicitudes_pendientes, aceptar_solicitud, gestion_usuarios,eliminar_usuario
+from .views import solicitar_prestamo, logout_view, solicitudes_pendientes, aceptar_solicitud, gestion_usuarios,eliminar_usuario,devolver_libro
 urlpatterns = [
     path('', views.pagina_view, name='index'),
     path('pagina/',views.pagina_view, name='pagina'),
@@ -30,4 +30,6 @@ urlpatterns = [
     path('mi_perfil/', mi_perfil, name='mi_perfil'),
     path('eliminar_usuario/<int:id>/', eliminar_usuario, name='eliminar_usuario' ),
     path('eliminar_libro/<int:id>/', eliminar_libro, name='eliminar_libro' ),
+    path('devolver_libro/<int:id>/', devolver_libro, name='devolver_libro'),
+    
     ]
